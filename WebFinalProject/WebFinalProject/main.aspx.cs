@@ -17,13 +17,24 @@ namespace WebFinalProject
             {
                 string DirPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
                 String solPath = DirPath.Substring(0, DirPath.Length - 4);
+                PanelLogin.Visible = true;
+                PanelRegister.Visible = false;
             }
         }
 
-        protected void Logout_click(object sender, EventArgs e)
+        protected void sign_up(object sender, EventArgs e)
         {
-            Session["Account"] = null;
-            Response.Redirect("Server.aspx");
+            PanelLogin.Visible = false;
+            PanelRegister.Visible = true;
         }
+
+        protected void sign_in(object sender, EventArgs e)
+        {
+         
+            PanelLogin.Visible = true;
+            PanelRegister.Visible = false;
+           
+        }
+
     }
 }
