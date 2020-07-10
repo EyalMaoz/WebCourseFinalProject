@@ -25,6 +25,6 @@ namespace WebFinalProject
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<user> user { get; set; }
     }
 }

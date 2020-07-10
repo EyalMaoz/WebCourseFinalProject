@@ -12,7 +12,7 @@ namespace WebFinalProject
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class user
     {
         public string userName { get; set; }
         public string password { get; set; }
