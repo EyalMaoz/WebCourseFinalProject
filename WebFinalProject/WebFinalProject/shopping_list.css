@@ -7,7 +7,16 @@
 }
 
 .simple{
-    margin-left: 22.5%;
+margin: auto;
+width: 90%;
+}
+
+.checkbox label, .radio label {
+    min-height: 20px;
+    /* padding-left: 20px; */
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
 }
 
   .animated.bounceIn, .animated.bounceOut, .animated.flipOutX, .animated.flipOutY {
@@ -18,7 +27,8 @@
   background-color: #e8e8e8;
 }
 .todo-list {
-  margin: 20px 0;
+   display: inherit;
+   margin: 60px 0px 0px 0px;
 }
 .todo-list li {
   background: #fff;
@@ -50,7 +60,7 @@
 }
 .todo-list li .checkbox {
   margin: 0;
-  padding: 10px 15px;
+  /*padding: 10px 15px;*/
   border-radius: 5px;
 }
 .todo-list li label {
@@ -73,9 +83,8 @@
 .todo-list li .close {
   display: none;
   position: absolute;
-  width: 12px;
+  width: 10px;
   height: 16px;
-  top: 50%;
   margin-top: -8px;
   right: 10px;
   font-size: 16px;
@@ -366,4 +375,5 @@ svg {
 .col-xs-offset-3 {
 
 }
+
 
