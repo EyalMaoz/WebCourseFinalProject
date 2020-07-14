@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>ToDo Panda</title>
+    <title>Panda Helper</title>
      <!-- Required meta tags -->
      <meta charset="UTF-8">
      <%--bootstrapcdn - in google - this is the palce we took this link, for the css class--%>
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="panda_functions.js"></script>
+  
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -76,5 +76,46 @@
 
 </div>
 </form>
+
+ <script>
+    $('#password').focusin(function () {
+        $('form').addClass('up');
+        console.log("pass");
+    });
+    $('#password').focusout(function () {
+        $('form').removeClass('up');
+        console.log("pass1");
+    });
+
+    $('#password2').focusin(function () {
+        $('form').addClass('up');
+        console.log("pass12");
+    });
+    $('#password2').focusout(function () {
+        $('form').removeClass('up');
+        console.log("pass123");
+    });
+
+    // Panda Eye move
+    $(document).on("mousemove", function (event) {
+        var dw = $(document).width() / 15;
+        var dh = $(document).height() / 15;
+        var x = event.pageX / dw;
+        var y = event.pageY / dh;
+        $('.eye-ball').css({
+            width: x,
+            height: y
+        });
+    });
+
+    // validation
+    $('.btn').click(function () {
+        $('form').addClass('wrong-entry');
+        setTimeout(function () {
+            $('form').removeClass('wrong-entry');
+        }, 3000);
+    });
+</script>
+
 </body>
 </html>

@@ -4,8 +4,27 @@
   box-sizing: border-box;
 }
 
+#signUp{
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12px !important;
+    color: #88b88a;
+}
+
+#signIn{
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12px !important;
+    color: #88b88a;
+}
+
+#worngEmailPass{
+    font-weight:200;
+    color:#2059a0;
+    font-size: 15px !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
 body {
-  background: #bb4c4c;
+  background: #789279;
   text-align: center;
   font-family: 'Roboto', sans-serif;
 }
@@ -25,25 +44,6 @@ body {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
   z-index: 50;
   position: relative;
-}
-
-#signUp{
-    font-family: 'Roboto', sans-serif !important;
-    font-size: 12px !important;
-    color: #bb4c4c;
-}
-
-#signIn{
-    font-family: 'Roboto', sans-serif !important;
-    font-size: 12px !important;
-    color: #bb4c4c;
-}
-
-#worngEmailPass{
-    color:#bb4c4c;
-    font-size: 12px !important;
-    font-family: 'Roboto', sans-serif !important;
-    margin-top:5px;
 }
 
 .ear, .ear:after {
@@ -251,10 +251,10 @@ form.up {
 }
 
 h1 {
-  color: #f37979;
+  color: #88b88a;
   font-family: 'Poiret One', cursive;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 27px;
 }
 
 .btn {
@@ -262,17 +262,16 @@ h1 {
   padding: 5px;
   width: 150px;
   height: 35px;
-  border: 1px solid #f37979;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top:10px;
+  border: 1px solid #88b88a;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 50px #f37979 inset;
+  box-shadow: 0 50px #88b88a inset;
   color: #fff;
 }
 .btn:hover {
-  box-shadow: 0 0 #f37979 inset;
-  color: #f37979;
+  box-shadow: 0 0 #88b88a inset;
+  color: #88b88a;
 }
 .btn:focus {
   outline: none;
@@ -310,12 +309,12 @@ h1 {
 }
 .form-group .form-control:focus, .form-group .form-control:valid {
   outline: none;
-  box-shadow: 0 1px #f37979;
-  border-color: #f37979;
+  box-shadow: 0 1px #88b88a;
+  border-color: #88b88a;
 }
 .form-group .form-control:focus + .form-label, .form-group .form-control:valid + .form-label {
   font-size: 12px;
-  color: #f37979;
+  color: #88b88a;
   -webkit-transform: translateY(-15px);
   transform: translateY(-15px);
 }
