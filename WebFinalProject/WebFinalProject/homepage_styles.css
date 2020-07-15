@@ -3,14 +3,17 @@
 
 .item1 {
     grid-area: header;
+
 }
 
 .item2 {
     grid-area: menu;
+    grid-row: span 150 ;
 }
 
 .item3 {
     grid-area: main;
+    grid-row: span 150 ;
 }
 
 .shopping_container {
@@ -36,9 +39,9 @@
 
 .grid-container {
     display: grid;
-    height: 100%;
-    width: 100%;
-    grid-template-areas: 'header header header header header header' 'menu main main main main main' 'menu main main main main main';
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas: 'header header header header header header' 'menu main main main main main' ;
     grid-gap: 2px;
     background-color: #d0d3d6;
     padding: 2px;
@@ -123,7 +126,7 @@
     .sidebar a {
         font-family: 'Poiret One';
         font-weight: bold;
-        padding: 6px 25px 15px 0px;
+        padding: 6px 15px 15px 0px;
         text-decoration: none;
         font-size: 20px;
         color: #3e3e3e;
@@ -133,6 +136,7 @@
         /* Style links on mouse-over */
         .sidebar a:hover {
             color: #85a687;
+            text-decoration: none !important;
         }
 
 /* Style the main content */
