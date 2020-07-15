@@ -3,7 +3,12 @@
   font: 14px 'Nunito', sans-serif;
 }
 .today{
-  font-size: 22px;
+    text-align: center;
+    color: #4a4a4a;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Poiret One';
+    font-size: 3rem;
 }
 
 .simple{
@@ -11,21 +16,11 @@ margin: auto;
 width: 90%;
 }
 
-.checkbox label, .radio label {
-    min-height: 20px;
-    /* padding-left: 20px; */
-    margin-bottom: 0;
-    font-weight: 400;
-    cursor: pointer;
-}
-
   .animated.bounceIn, .animated.bounceOut, .animated.flipOutX, .animated.flipOutY {
     font-size: 13px;
   }
 
-.container1 {
-  background-color: #e8e8e8;
-}
+
 .todo-list {
    display: inherit;
    margin: 60px 0px 0px 0px;
@@ -55,7 +50,7 @@ width: 90%;
   font-family: 'FontAwesome';
   display: block;
   position: absolute;
-  top: -3px;
+  top: -5px;
   left: 0;
 }
 .todo-list li .checkbox {
@@ -81,13 +76,13 @@ width: 90%;
   margin-top: 4px;
 }
 .todo-list li .close {
-  display: none;
-  position: absolute;
-  width: 10px;
-  height: 16px;
-  margin-top: -8px;
-  right: 10px;
-  font-size: 16px;
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    width: 45px;
+    height: 35px;
+    margin-top: -8px;
+    font-size: 16px;
 }
 .todo-list li .close .fa {
   line-height: 16px;
@@ -367,13 +362,17 @@ svg {
     flex: 0 0 100% !important;
 }
 
-.col-md-offset-4 {
- 
+
+.list-name{
+    margin: 2% 11% 0px;
+    display:inline-flex;
 }
 
-
-.col-xs-offset-3 {
+#input-list-name{
 
 }
 
-
+#confirm-list{
+    background-color: darkseagreen;
+    border-color: darkseagreen; 
+}

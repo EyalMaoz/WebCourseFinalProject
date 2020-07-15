@@ -58,10 +58,10 @@
                     </ul>
                     <div id="rightNav">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control1 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <input class="form-control1 mr-sm-2 form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
                         </form>
-                        <a class="navbar-brand" href="#">Logout</a>
+                        <a class="navbar-brand logout-btn" href="#"><i class="fa fa-sign-out"></i>Logout</a>
                     </div>
                 </div>
             </nav>
@@ -69,43 +69,45 @@
 
         <div class="item2">
             <div class="sidebar">
-                <a href="#home"><i class="fa fa-tasks"></i>Today</a>
-                <a href="#services"><i class="fa fa-calendar-check-o"></i>Calendar</a>
-                <a href="#clients"><i class="fa fa-fw fa-user"></i>Help</a>
-                <a href="#contact"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
+                <a href="#home"><i class="fa fa-tasks my-fa"></i>Today</a>
+                <a href="#services"><i class="fa fa-calendar-check-o my-fa"></i>Calendar</a>
+                <a href="#clients"><i class="fa fa-fw fa-user my-fa"></i>Help</a>
+                <a href="#contact"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</a>
             </div>
         </div>
 
         <!-- Main container -->
         <div class="item3">
             <div>
-                <button class="btn btn-primary btn-sm">add new list</button>
-                <button class="btn btn-primary btn-sm">filter</button></div>
+                <button class="btn btn-primary btn-sm add-list-buttons" onclick="add_new_list()">Add New List</button>
+                <button class="btn btn-primary btn-sm add-list-buttons">Filter</button>
+            </div>
+            <div class="today"></div>
             <div class="cards">
                 <div class="card">
-
-
                     <div class="container1">
-                        <div class="today"></div>
+                        <div class="list-name">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <input type="text" class="form-control" id="input-list-name" placeholder="Add List Name" />
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2" id="confirm-list">Confirm</button>
+                        </div>
                         <div class="row">
                             <div class="simple">
                                 <div class="add-control">
                                     <div class="form-group has-feedback">
-                                        <input type="text" class="form-control" placeholder="Add item..." />
+                                        <input type="text" class="form-control" id="add-item" placeholder="Add a task..." />
                                         <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
                                     </div>
                                 </div>
                                 <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter name item</p>
-                                <p class="no-items text-muted text-center hidden"><i class="fa fa-ban"></i></p>
+
                                 <ul class="todo-list">
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
                 <div class="card">
                 </div>
                 <div class="card">
@@ -116,356 +118,361 @@
         </div>
 
 
-<!-- functions for the ToDoLists -->
-<script>
-    var state = [];
+        <!-- functions for the ToDoLists -->
+        <script>
+            var state = [];
 
-    function setDefaultState() {
-        var id = generateID();
-        var baseState = {};
-        baseState[id] = {
-            status: "new",
-            id: id,
-            title: "Go to the store"
-        };
-        syncState(baseState);
-    }
+            function setDefaultState() {
+                var id = generateID();
+                var baseState = {};
+                baseState[id] = {
+                    status: "new",
+                    id: id,
+                    title: "Go to the store"
+                };
+                syncState(baseState);
+            }
 
-    function generateID() {
-        var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-        return randLetter + Date.now();
-    }
+            function generateID() {
+                var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                return randLetter + Date.now();
+            }
 
-    function pushToState(title, status, id) {
-        var baseState = getState();
-        baseState[id] = { id: id, title: title, status: status };
-        syncState(baseState);
-    }
+            function pushToState(title, status, id) {
+                var baseState = getState();
+                baseState[id] = { id: id, title: title, status: status };
+                syncState(baseState);
+            }
 
-    function setToDone(id) {
-        var baseState = getState();
-        if (baseState[id].status === 'new') {
-            baseState[id].status = 'done'
-        } else {
-            baseState[id].status = 'new';
-        }
+            function setToDone(id) {
+                var baseState = getState();
+                if (baseState[id].status === 'new') {
+                    baseState[id].status = 'done'
+                } else {
+                    baseState[id].status = 'new';
+                }
 
-        syncState(baseState);
-    }
+                syncState(baseState);
+            }
 
-    function deleteTodo(id) {
-        console.log(id)
-        var baseState = getState();
-        delete baseState[id]
-        syncState(baseState)
-    }
+            function deleteTodo(id) {
+                console.log(id)
+                var baseState = getState();
+                delete baseState[id]
+                syncState(baseState)
+            }
 
-    function resetState() {
-        localStorage.setItem("state", null);
-    }
+            function resetState() {
+                localStorage.setItem("state", null);
+            }
 
-    function syncState(state) {
-        localStorage.setItem("state", JSON.stringify(state));
-    }
+            function syncState(state) {
+                localStorage.setItem("state", JSON.stringify(state));
+            }
 
-    function getState() {
-        return JSON.parse(localStorage.getItem("state"));
-    }
+            function getState() {
+                return JSON.parse(localStorage.getItem("state"));
+            }
 
-    function addItem(text, status, id, noUpdate) {
-        var id = id ? id : generateID();
-        var c = status === "done" ? "danger" : "";
-        var item = '<li data-id="' + id + '" class="animated flipInX ' + c +'"><div class="checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
-          text +"</label></div></li>";
+            function addItem(text, status, id, noUpdate) {
+                var id = id ? id : generateID();
+                var c = status === "done" ? "danger" : "";
+                var item = '<li data-id="' + id + '" class="animated flipInX ' + c + '"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
+                  text + "</label></div></li>";
 
-        var isError = $(".form-control").hasClass("hidden");
+                var isError = $("#add-item").hasClass("hidden");
 
-        if (text === "") {
-            $(".err")
-              .removeClass("hidden")
-              .addClass("animated bounceIn");
-        } else {
-            $(".err").addClass("hidden");
-            $(".todo-list").append(item);
-        }
+                if (text === "") {
+                    $(".err")
+                      .removeClass("hidden")
+                      .addClass("animated bounceIn");
+                } else {
+                    $(".err").addClass("hidden");
+                    $(".todo-list").append(item);
+                }
 
-        $(".refresh").removeClass("hidden");
+                $(".refresh").removeClass("hidden");
 
-        $(".no-items").addClass("hidden");
 
-        $(".form-control")
-          .val("")
-          .attr("placeholder", "Add item...");
-        setTimeout(function () {
-            $(".todo-list li").removeClass("animated flipInX");
-        }, 500);
 
-        if (!noUpdate) {
-            pushToState(text, "new", id);
-        }
-    }
+                $("#add-item")
+                  .val("")
+                  .attr("placeholder", "Add a task...");
+                setTimeout(function () {
+                    $(".todo-list li").removeClass("animated flipInX");
+                }, 500);
 
-    function refresh() {
-        $(".todo-list li").each(function (i) {
-            $(this)
-              .delay(70 * i)
-              .queue(function () {
-                  $(this).addClass("animated bounceOutLeft");
-                  $(this).dequeue();
-              });
-        });
+                if (!noUpdate) {
+                    pushToState(text, "new", id);
+                }
+            }
 
-        setTimeout(function () {
-            $(".todo-list li").remove();
-            $(".no-items").removeClass("hidden");
-            $(".err").addClass("hidden");
-        }, 800);
-    }
+            function refresh() {
+                $(".todo-list li").each(function (i) {
+                    $(this)
+                      .delay(70 * i)
+                      .queue(function () {
+                          $(this).addClass("animated bounceOutLeft");
+                          $(this).dequeue();
+                      });
+                });
 
-    $(function () {
-        var err = $(".err"),
-          formControl = $(".form-control"),
-          isError = formControl.hasClass("hidden");
+                setTimeout(function () {
+                    $(".todo-list li").remove();
+                    $(".err").addClass("hidden");
+                }, 800);
+            }
 
-        if (!isError) {
-            formControl.blur(function () {
-                err.addClass("hidden");
+            $(function () {
+                var err = $(".err"),
+                  formControl = $("#add-item"),
+                  isError = formControl.hasClass("hidden");
+
+                if (!isError) {
+                    formControl.blur(function () {
+                        err.addClass("hidden");
+                    });
+                }
+
+                $(".add-btn").on("click", function () {
+                    var itemVal = $("#add-item").val();
+                    addItem(itemVal);
+                    formControl.focus();
+                });
+
+                $(".refresh").on("click", refresh);
+
+                $(".todo-list").on("click", 'input[type="checkbox"]', function () {
+                    var li = $(this)
+                      .parent()
+                      .parent()
+                      .parent();
+                    li.toggleClass("danger");
+                    li.toggleClass("animated flipInX");
+
+                    setToDone(li.data().id);
+
+                    setTimeout(function () {
+                        li.removeClass("animated flipInX");
+                    }, 500);
+                });
+
+                $(".todo-list").on("click", ".close", function () {
+                    var box = $(this)
+                      .parent()
+                      .parent();
+
+                    if ($(".todo-list li").length == 1) {
+                        box.removeClass("animated flipInX").addClass("animated                bounceOutLeft");
+                        setTimeout(function () {
+                            box.remove();
+
+                            $(".refresh").addClass("hidden");
+                        }, 500);
+                    } else {
+                        box.removeClass("animated flipInX").addClass("animated bounceOutLeft");
+                        setTimeout(function () {
+                            box.remove();
+                        }, 500);
+                    }
+                    deleteTodo(box.data().id)
+                });
+
+                $("#add-item").keypress(function (e) {
+                    if (e.which == 13) {
+                        var itemVal = $("#add-item").val();
+                        addItem(itemVal);
+                    }
+                });
+                $(".todo-list").sortable();
+                $(".todo-list").disableSelection();
             });
-        }
 
-        $(".add-btn").on("click", function () {
-            var itemVal = $(".form-control").val();
-            addItem(itemVal);
-            formControl.focus();
-        });
+            var todayContainer = document.querySelector(".today");
 
-        $(".refresh").on("click", refresh);
 
-        $(".todo-list").on("click", 'input[type="checkbox"]', function () {
-            var li = $(this)
-              .parent()
-              .parent()
-              .parent();
-            li.toggleClass("danger");
-            li.toggleClass("animated flipInX");
+            var d = new Date();
 
-            setToDone(li.data().id);
 
-            setTimeout(function () {
-                li.removeClass("animated flipInX");
-            }, 500);
-        });
+            var weekday = new Array(7);
+            weekday[0] = "Sunday !";
+            weekday[1] = "Monday !";
+            weekday[2] = "Tuesday !";
+            weekday[3] = "Wednesday !";
+            weekday[4] = "Thursday !";
+            weekday[5] = "Friday !";
+            weekday[6] = "Saturday !";
 
-        $(".todo-list").on("click", ".close", function () {
-            var box = $(this)
-              .parent()
-              .parent();
 
-            if ($(".todo-list li").length == 1) {
-                box.removeClass("animated flipInX").addClass("animated                bounceOutLeft");
-                setTimeout(function () {
-                    box.remove();
-                    $(".no-items").removeClass("hidden");
-                    $(".refresh").addClass("hidden");
-                }, 500);
-            } else {
-                box.removeClass("animated flipInX").addClass("animated bounceOutLeft");
-                setTimeout(function () {
-                    box.remove();
-                }, 500);
+            var n = weekday[d.getDay()];
+
+
+            var randomWordArray = Array(
+              "Oh my, it's ",
+              "Whoop, it's ",
+              "Happy ",
+              "Seems it's ",
+              "Awesome, it's ",
+              "Have a nice ",
+              "Happy fabulous ",
+              "Enjoy your "
+            );
+
+            var randomWord =
+              randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
+
+
+            todayContainer.innerHTML = randomWord + n;
+
+            $(document).ready(function () {
+                var state = getState();
+
+                if (!state) {
+                    setDefaultState();
+                    state = getState();
+                }
+
+                Object.keys(state).forEach(function (todoKey) {
+                    var todo = state[todoKey];
+                    addItem(todo.title, todo.status, todo.id, true);
+                });
+
+                var mins, secs, update;
+
+                init();
+                function init() {
+                    (mins = 25), (secs = 59);
+                }
+
+
+                set();
+                function set() {
+                    $(".mins").text(mins);
+                }
+
+
+                $("#start").on("click", start_timer);
+                $("#reset").on("click", reset);
+                $("#inc").on("click", inc);
+                $("#dec").on("click", dec);
+
+                function start_timer() {
+
+                    set();
+
+                    $(".dis").attr("disabled", true);
+
+                    $(".mins").text(--mins);
+                    $(".separator").text(":");
+                    update_timer();
+
+                    update = setInterval(update_timer, 1000);
+                }
+
+                function update_timer() {
+                    $(".secs").text(secs);
+                    --secs;
+                    if (mins == 0 && secs < 0) {
+                        reset();
+                    } else if (secs < 0 && mins > 0) {
+                        secs = 59;
+                        --mins;
+                        $(".mins").text(mins);
+                    }
+                }
+
+
+                function reset() {
+                    clearInterval(update);
+                    $(".secs").text("");
+                    $(".separator").text("");
+                    init();
+                    $(".mins").text(mins);
+                    $(".dis").attr("disabled", false);
+                }
+
+
+                function inc() {
+                    mins++;
+                    $(".mins").text(mins);
+                }
+
+
+                function dec() {
+                    if (mins > 1) {
+                        mins--;
+                        $(".mins").text(mins);
+                    } else {
+                        alert("This is the minimum limit.");
+                    }
+                }
+            });
+
+
+
+            // Create a "close" button and append it to each list item
+            var myNodelist = document.getElementsByTagName("LI");
+            var i;
+            for (i = 0; i < myNodelist.length; i++) {
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                myNodelist[i].appendChild(span);
             }
-            deleteTodo(box.data().id)
-        });
 
-        $(".form-control").keypress(function (e) {
-            if (e.which == 13) {
-                var itemVal = $(".form-control").val();
-                addItem(itemVal);
+            // Click on a close button to hide the current list item
+            var close = document.getElementsByClassName("close");
+            var i;
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
             }
-        });
-        $(".todo-list").sortable();
-        $(".todo-list").disableSelection();
-    });
 
-    var todayContainer = document.querySelector(".today");
+            // Add a "checked" symbol when clicking on a list item
+            var list = document.querySelector('ul');
+            list.addEventListener('click', function (ev) {
+                if (ev.target.tagName === 'LI') {
+                    ev.target.classList.toggle('checked');
+                }
+            }, false);
 
+            // Create a new list item when clicking on the "Add" button
+            function newElement() {
+                var li = document.createElement("li");
+                var inputValue = document.getElementById("myInput").value;
+                var t = document.createTextNode(inputValue);
+                li.appendChild(t);
+                if (inputValue === '') {
+                    alert("You must write something!");
+                } else {
+                    document.getElementById("myUL").appendChild(li);
+                }
+                document.getElementById("myInput").value = "";
 
-    var d = new Date();
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                li.appendChild(span);
 
-
-    var weekday = new Array(7);
-    weekday[0] = "Sunday 🖖";
-    weekday[1] = "Monday 💪😀";
-    weekday[2] = "Tuesday 😜";
-    weekday[3] = "Wednesday 😌☕️";
-    weekday[4] = "Thursday 🤗";
-    weekday[5] = "Friday 🍻";
-    weekday[6] = "Saturday 😴";
-
-
-    var n = weekday[d.getDay()];
-
-
-    var randomWordArray = Array(
-      "Oh my, it's ",
-      "Whoop, it's ",
-      "Happy ",
-      "Seems it's ",
-      "Awesome, it's ",
-      "Have a nice ",
-      "Happy fabulous ",
-      "Enjoy your "
-    );
-
-    var randomWord =
-      randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
-
-
-    todayContainer.innerHTML = randomWord + n;
-
-    $(document).ready(function () {
-        var state = getState();
-
-        if (!state) {
-            setDefaultState();
-            state = getState();
-        }
-
-        Object.keys(state).forEach(function (todoKey) {
-            var todo = state[todoKey];
-            addItem(todo.title, todo.status, todo.id, true);
-        });
-
-        var mins, secs, update;
-
-        init();
-        function init() {
-            (mins = 25), (secs = 59);
-        }
-
-
-        set();
-        function set() {
-            $(".mins").text(mins);
-        }
-
-
-        $("#start").on("click", start_timer);
-        $("#reset").on("click", reset);
-        $("#inc").on("click", inc);
-        $("#dec").on("click", dec);
-
-        function start_timer() {
-
-            set();
-
-            $(".dis").attr("disabled", true);
-
-            $(".mins").text(--mins);
-            $(".separator").text(":");
-            update_timer();
-
-            update = setInterval(update_timer, 1000);
-        }
-
-        function update_timer() {
-            $(".secs").text(secs);
-            --secs;
-            if (mins == 0 && secs < 0) {
-                reset();
-            } else if (secs < 0 && mins > 0) {
-                secs = 59;
-                --mins;
-                $(".mins").text(mins);
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function () {
+                        var div = this.parentElement;
+                        div.style.display = "none";
+                    }
+                }
             }
-        }
 
 
-        function reset() {
-            clearInterval(update);
-            $(".secs").text("");
-            $(".separator").text("");
-            init();
-            $(".mins").text(mins);
-            $(".dis").attr("disabled", false);
-        }
+            //functions of the page:
+            function add_new_list() {
 
 
-        function inc() {
-            mins++;
-            $(".mins").text(mins);
-        }
-
-
-        function dec() {
-            if (mins > 1) {
-                mins--;
-                $(".mins").text(mins);
-            } else {
-                alert("This is the minimum limit.");
             }
-        }
-    });
-
-
-
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-</script>
-
+        </script>
 </body>
 
 </html>
