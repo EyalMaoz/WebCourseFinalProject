@@ -362,17 +362,3 @@ svg {
     flex: 0 0 100% !important;
 }
 
-
-.list-name{
-    margin: 2% 11% 0px;
-    display:inline-flex;
-}
-
-#input-list-name{
-
-}
-
-#confirm-list{
-    background-color: darkseagreen;
-    border-color: darkseagreen; 
-}

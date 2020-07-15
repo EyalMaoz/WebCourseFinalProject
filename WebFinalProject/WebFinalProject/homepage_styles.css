@@ -282,10 +282,10 @@ input {
 }
 
 .card {
+    display:flex !important;
     box-shadow: 3px 2px 5px 0px #c3c3c3 !important;
     position: relative !important;
     display: -ms-flexbox !important;
-    display: flex !important;
     -ms-flex-direction: column !important;
     flex-direction: column !important;
     min-width: 0 !important;
@@ -322,3 +322,23 @@ input {
     font-family: 'Poiret One';
     font-weight: bold;
 }
+
+
+.list-name{
+    display:inline-flex;
+}
+
+#add-list-name{
+    margin: 10px!important;
+    color: darkslategrey;
+    width: 420px !important;
+    font-family: 'Poiret One' !important;
+    font-weight: bold !important;
+    font-size: 22px !important;
+    border: 0 !important;
+    background-color: none;
+    box-shadow: none;
+    padding-right: 42.5px;
+
+}
+

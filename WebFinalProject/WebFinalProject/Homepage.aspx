@@ -45,7 +45,8 @@
 </head>
 
 <body>
-
+          
+              
     <div class="grid-container">
         <div class="item1">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,7 +62,7 @@
                             <input class="form-control1 mr-sm-2 form-control" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
                         </form>
-                        <a class="navbar-brand logout-btn" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+                        <a class="navbar-brand logout-btn" href="#"><i class="fa fa-sign-out" style="padding-right:10px"></i>Logout</a>
                     </div>
                 </div>
             </nav>
@@ -84,13 +85,13 @@
             </div>
             <div class="today"></div>
             <div class="cards">
-                <div class="card">
-                    <div class="container1">
+                <div class="card"> 
+                     <div class="new-list">
                         <div class="list-name">
-                            <div class="form-group mx-sm-3 mb-2">
-                                <input type="text" class="form-control" id="input-list-name" placeholder="Add List Name" />
-                            </div>
-                            <button type="submit" class="btn btn-primary mb-2" id="confirm-list">Confirm</button>
+
+                                <input type="text" class="form-control " id="add-list-name" placeholder="My First List" onclick="addListName"/>
+          
+                          <%--  <button type="submit" class="btn btn-primary mb-2" id="confirm-list">Confirm</button>--%>
                         </div>
                         <div class="row">
                             <div class="simple">
@@ -101,18 +102,13 @@
                                     </div>
                                 </div>
                                 <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter name item</p>
-
                                 <ul class="todo-list">
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                </div>
-                <div class="card">
-                </div>
-                <div class="card">
+
+
                 </div>
             </div>
         </div>
@@ -277,6 +273,8 @@
                     }
                     deleteTodo(box.data().id)
                 });
+
+
 
                 $("#add-item").keypress(function (e) {
                     if (e.which == 13) {
@@ -467,10 +465,10 @@
             }
 
 
-            //functions of the page:
+            // functions of the page:
+            // create a ney list
+
             function add_new_list() {
-
-
             }
         </script>
 </body>
