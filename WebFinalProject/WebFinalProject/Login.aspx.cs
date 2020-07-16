@@ -25,18 +25,26 @@ namespace WebFinalProject
 
         protected void login(object sender, EventArgs e)
         {
-            using (var db = new webProjectEntities())
+            try
             {
-                var user = db.user.Where(tempAccount => tempAccount.userName.Equals(email.Text) && tempAccount.password.Equals(password.Text)).FirstOrDefault();
-                if (user == null)
+                using (var db = new webProjectEntities())
                 {
-                    worngEmailPass.Visible = true;
+
+                    var user = db.user.Where(tempAccount => tempAccount.userName.Equals(email.Text) && tempAccount.password.Equals(password.Text)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        worngEmailPass.Visible = true;
+                    }
+                    else
+                    {
+                        Session["user"] = user.userName;
+                        Response.Redirect("Homepage.aspx");
+                    }
                 }
-                else
-                {
-                    Session["user"] = user.userName;
-                    Response.Redirect("Homepage.aspx");
-                }
+            }
+            catch(Exception)
+            {
+                worngEmailPass.Visible = true;
             }
 
         }
