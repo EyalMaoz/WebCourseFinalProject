@@ -323,7 +323,13 @@
             todayContainer.innerHTML = randomWord + n;
 
             $(document).ready(function () {
-                var state = getState();
+
+                $.each(Tasks, function (index, task) {
+                    addItem(Tasks[index].text, Tasks[index].isDone, Tasks[index].id, true);
+                });
+
+                // Eyal - Load from browser if we want:
+                /*var state = getState();
 
                 if (!state) {
                     setDefaultState();
@@ -333,8 +339,8 @@
                 Object.keys(state).forEach(function (todoKey) {
                     var todo = state[todoKey];
                     addItem(todo.title, todo.status, todo.id, true);
-                });
-
+                });*/
+                
                 var mins, secs, update;
 
                 init();
@@ -469,6 +475,28 @@
             // create a ney list
 
             function add_new_list() {
+                
+            }
+            function logout() {
+                SaveTasks();
+                Response.Redirect("Login.aspx");
+
+            }
+            var Tasks = [{ "id": "0", "text": "task1Test", "isDone": "new" }, { "id": "1", "text": "task2Test", "isDone": "done" }];
+
+            function SaveTasks() {
+                $.ajax({
+                    url: "webservice.asmx/SaveTasks",
+                    data: { tasksArray: JSON.stringify(Tasks) },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                    },
+                    error: function (er) {
+
+                    }
+                }).done();
+
             }
         </script>
 </body>
