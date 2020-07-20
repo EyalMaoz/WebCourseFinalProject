@@ -11,20 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>--%>
     <link rel="stylesheet" type="text/css" href="shopping_list.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
     <script src="https://kit.fontawesome.com/56942480bb.js" crossorigin="anonymous"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
-    <script src="js/index.js"></script>
+    <%--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>--%>
+    <%--<script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>--%>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <link rel="shortcut icon" href="todost.png">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
@@ -32,22 +29,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css'>
-    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-
+    <%--<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>--%>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.0/angular.js"> </script>
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Bootstrap core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <%--<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
     <!--external css-->
-    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <%--<link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />--%>
+
+     <%--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--%>
+    <%--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>--%>
+    <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>--%>
 
     <title>Panda Helper</title>
 
 </head>
 
-<body ng-app="ngAnimate">
+<body>
           
               
     <div class="grid-container">
@@ -76,23 +77,26 @@
                 <a href="#home"><i class="fa fa-tasks my-fa"></i>Today</a>
                 <a href="#services"><i class="fa fa-calendar-check-o my-fa"></i>Calendar</a>
                 <a href="#clients"><i class="fa fa-fw fa-user my-fa"></i>Help</a>
-                <a href="#contact"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</a>
+                <a href="#contact" ng-click ="contact_page"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</a>
             </div>
         </div>
 
         <!-- Main container -->
         <div class="item3">
-            <div>
-                <button class="btn btn-primary btn-sm add-list-buttons" onclick="add_new_list()" ng-model="anim-card">Add New List</button>
+            <div class ="buttons">
+                <button class="btn btn-primary btn-sm add-list-buttons" onclick="AddNewList()">Add New List</button>
                 <button class="btn btn-primary btn-sm add-list-buttons">Filter</button>
             </div>
             <div class="today"></div>
-            <div class="cards">
-                <div class="card" ng-hide="anim-card"> 
+            <div class="list-card">
+                <div class="card"> 
                      <div class="new-list">
+                         <div >
                         <div class="list-name">
-                                <input type="text" class="form-control " id="add-list-name" placeholder="My First List" onclick="addListName"/>
+                                <input type="text" class="form-control " id="add-list-name" placeholder="My List" onclick="addListName"/>
                         </div>
+                           <i class="fa fa-save form-control-feedback" style="color: cornflowerblue;" onclick="SaveList()"></i>
+                         </div>
                         <div class="row">
                             <div class="simple">
                                 <div class="add-control">
@@ -107,9 +111,15 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+            </div>
+            <div class="lists">
+            <h2 id="lists-headline">My Lists</h2>
+            <div class="card"> 
+                <ul class="list-lists">
+             <li class="item-lists">first</li>
+                </ul>
+            </div>
             </div>
         </div>
 
@@ -121,7 +131,7 @@
         <!-- functions for the ToDoLists -->
         <script>
             var state = [];
-
+           
             function setDefaultState() {
                 var id = generateID();
                 var baseState = {};
@@ -235,6 +245,7 @@
                 }
 
                 $(".add-btn").on("click", function () {
+                    console.log('in')
                     var itemVal = $("#add-item").val();
                     addItem(itemVal);
                     formControl.focus();
@@ -280,14 +291,14 @@
 
 
 
-                $("#add-item").keypress(function (e) {
+                $(".add-item").keypress(function (e) {
                     if (e.which == 13) {
-                        var itemVal = $("#add-item").val();
+                        var itemVal = $(".add-item").val();
                         addItem(itemVal);
                     }
                 });
-                $(".todo-list").sortable();
-                $(".todo-list").disableSelection();
+               // $(".todo-list").sortable();
+                //$(".todo-list").disableSelection();
             });
 
             var todayContainer = document.querySelector(".today");
@@ -474,11 +485,64 @@
                 }
             }
 
+/////////////////////////////////////////////////////////////////////////////////
+////----------------functions for the page------------------------------------////
+            var card_state = 1;
+            // Add a new list
+            function AddNewList() {
+                //card_state++;
+                //var new_list = '<div class="new-list new-list-${card_state}"> \
+                //        <div class="list-name"> \
+                //                <input type="text" class="form-control " id="add-list-name-' + card_state + '" placeholder="My First List" onclick="addListName"/> \
+                //        </div> \
+                //        <div class="row"> \
+                //            <div class="simple"> \
+                //                <div class="add-control"> \
+                //                    <div class="form-group has-feedback"> \
+                //                        <input type="text" class="form-control" id="add-item-' + card_state + '" placeholder="Add a task..." /> \
+                //                        <i class="fa fa-plus form-control-feedback add-btn" title="Add item" onclick="addTask('+card_state+')"></i> \
+                //                    </div> \
+                //                </div> \
+                //                <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter name item</p> \
+                //                <ul class="todo-list-' + card_state + '"> \
+                //                </ul> \
+                //            </div> \
+                //        </div> \
+                //    </div>';
+                //var html = document.getElementById('cards').innerHTML;
+                //var newcard = `<div class="card card-${card_state}">${new_list}</div>`;
+                //html += newcard;
+                //document.getElementById('cards').innerHTML = html;
 
-            // functions of the page:
-            // create a new list
 
-            function add_new_list() {
+            }
+
+
+            // function isnt activated 
+            function logout() {
+                SaveTasks();
+                Response.Redirect("Login.aspx");
+            }
+
+            var Tasks = [{ "id": "0", "text": "task1Test", "isDone": "new" }, { "id": "1", "text": "task2Test", "isDone": "done" }];
+
+            function SaveTasks() {
+                $.ajax({
+                    url: "webservice.asmx/SaveTasks",
+                    data: { tasksArray: JSON.stringify(Tasks) },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                    },
+                    error: function (er) {
+
+                    }
+                }).done();
+            }
+
+            function SaveList() {
+                //save list with its tasks in DB
+ 
             }
             
         </script>

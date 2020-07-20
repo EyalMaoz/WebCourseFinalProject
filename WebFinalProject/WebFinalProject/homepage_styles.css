@@ -8,12 +8,48 @@
 
 .item2 {
     grid-area: menu;
-    grid-row: span 150 ;
+
 }
 
 .item3 {
+    Grid-template-rows: 1fr 2fr 10fr;
     grid-area: main;
-    grid-row: span 150 ;
+    display: grid;
+    grid-template-areas:  
+        "buttons lists"
+        "today lists"
+        "list-card lists";
+}
+
+.lists{
+    grid-area: lists;
+}
+
+.buttons{
+    grid-area: buttons;
+}
+
+.list-card{
+    grid-area: list-card;
+}
+
+.today{
+    text-align: center;
+    grid-area: today;
+    margin:5% 0%;
+    color: #4a4a4a;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Poiret One';
+    font-size: 3rem;
+}
+
+#lists-headline{
+    margin: 8% 36%;
+    font-weight: bold ;
+    font-family: 'Poiret One';
+    font-size: 3rem;
+    color: darkseagreen;
 }
 
 .shopping_container {
@@ -38,6 +74,7 @@
 }
 
 .grid-container {
+    Grid-template-rows: 1fr 13fr;
     display: grid;
     height: 100vh;
     width: 100vw;
@@ -276,8 +313,10 @@ input {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     grid-auto-rows: auto;
+    margin-left:3%;
+    margin-top: 3%;
 
 }
 
@@ -352,3 +391,17 @@ input {
 
 }
 
+list-lists {
+  list-style: none;
+  padding: 0;
+}
+item-lists {
+  padding-left: 1.3em;
+}
+item-lists:before {
+  content: "\f00c"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}

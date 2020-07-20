@@ -2,14 +2,7 @@
   background: #020631;
   font: 14px 'Nunito', sans-serif;
 }
-.today{
-    text-align: center;
-    color: #4a4a4a;
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-family: 'Poiret One';
-    font-size: 3rem;
-}
+
 
 .simple{
 margin: auto;
@@ -59,9 +52,9 @@ width: 90%;
   border-radius: 5px;
 }
 .todo-list li label {
- padding-left: 0px !important; 
+ padding-left: 1px !important; 
   display: block;
-  padding-right: 10px;
+  padding-right: 1px;
 }
 .todo-list li label input[type="checkbox"] {
   visibility: hidden;
