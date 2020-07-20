@@ -59,6 +59,7 @@ width: 90%;
   border-radius: 5px;
 }
 .todo-list li label {
+ padding-left: 0px !important; 
   display: block;
   padding-right: 10px;
 }

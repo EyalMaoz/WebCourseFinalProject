@@ -223,7 +223,6 @@ ul {
 }
 
     .close:hover {
-        background-color: #f44336;
         color: white;
     }
 
@@ -279,6 +278,15 @@ input {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
+
+}
+
+.ng-hide {
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top:-200px;
+  left: 200px;
 }
 
 .card {
@@ -294,6 +302,8 @@ input {
     background-clip: border-box !important;
     border-radius: 10px !important;
     margin: 10px !important;
+    transition: all linear 0.5s;
+    background-color: lightblue;
 }
 
 .add-list-buttons {
@@ -331,7 +341,7 @@ input {
 #add-list-name{
     margin: 10px!important;
     color: darkslategrey;
-    width: 420px !important;
+    width: 100% !important;
     font-family: 'Poiret One' !important;
     font-weight: bold !important;
     font-size: 22px !important;

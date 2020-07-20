@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="homepage_styles.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -21,6 +22,8 @@
     <script src="https://kit.fontawesome.com/56942480bb.js" crossorigin="anonymous"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
     <script src="js/index.js"></script>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <link rel="shortcut icon" href="todost.png">
@@ -44,7 +47,7 @@
 
 </head>
 
-<body>
+<body ng-app="ngAnimate">
           
               
     <div class="grid-container">
@@ -80,18 +83,15 @@
         <!-- Main container -->
         <div class="item3">
             <div>
-                <button class="btn btn-primary btn-sm add-list-buttons" onclick="add_new_list()">Add New List</button>
+                <button class="btn btn-primary btn-sm add-list-buttons" onclick="add_new_list()" ng-model="anim-card">Add New List</button>
                 <button class="btn btn-primary btn-sm add-list-buttons">Filter</button>
             </div>
             <div class="today"></div>
             <div class="cards">
-                <div class="card"> 
+                <div class="card" ng-hide="anim-card"> 
                      <div class="new-list">
                         <div class="list-name">
-
                                 <input type="text" class="form-control " id="add-list-name" placeholder="My First List" onclick="addListName"/>
-          
-                          <%--  <button type="submit" class="btn btn-primary mb-2" id="confirm-list">Confirm</button>--%>
                         </div>
                         <div class="row">
                             <div class="simple">
@@ -112,6 +112,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
 
 
         <!-- functions for the ToDoLists -->
@@ -466,10 +470,15 @@
 
 
             // functions of the page:
-            // create a ney list
+            // create a new list
 
             function add_new_list() {
+                var div = document.getElementByClass('cards');
+                var card = document.getElementByClass('card');
+                var newlist = document.getElementByClass('new-list');
+                div.innerHTML += 'Extra stuff';
             }
+            
         </script>
 </body>
 
