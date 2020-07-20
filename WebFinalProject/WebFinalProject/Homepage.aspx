@@ -327,7 +327,13 @@
             todayContainer.innerHTML = randomWord + n;
 
             $(document).ready(function () {
-                var state = getState();
+
+                $.each(Tasks, function (index, task) {
+                    addItem(Tasks[index].text, Tasks[index].isDone, Tasks[index].id, true);
+                });
+
+                // Eyal - Load from browser if we want:
+                /*var state = getState();
 
                 if (!state) {
                     setDefaultState();
@@ -337,8 +343,8 @@
                 Object.keys(state).forEach(function (todoKey) {
                     var todo = state[todoKey];
                     addItem(todo.title, todo.status, todo.id, true);
-                });
-
+                });*/
+                
                 var mins, secs, update;
 
                 init();
@@ -473,10 +479,6 @@
             // create a new list
 
             function add_new_list() {
-                var div = document.getElementByClass('cards');
-                var card = document.getElementByClass('card');
-                var newlist = document.getElementByClass('new-list');
-                div.innerHTML += 'Extra stuff';
             }
             
         </script>

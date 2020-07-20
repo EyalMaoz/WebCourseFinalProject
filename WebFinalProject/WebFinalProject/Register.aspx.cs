@@ -45,7 +45,7 @@ namespace WebFinalProject
                         password.Text = "";
                         password2.Text = "";
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "Email already exists, please choose a different email", true);
                     }
