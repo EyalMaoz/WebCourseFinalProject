@@ -22,7 +22,10 @@
 }
 
 .lists{
+    border-left: solid 2px #d0d3d6;
     grid-area: lists;
+    background-color: #9e968a33;
+    border-left: solid 2px #d0d3d6;
 }
 
 .buttons{
@@ -37,7 +40,7 @@
     text-align: center;
     grid-area: today;
     margin:5% 0%;
-    color: #4a4a4a;
+    color: #87b189;
     font-weight: bold;
     margin-bottom: 15px;
     font-family: 'Poiret One';
@@ -49,7 +52,7 @@
     font-weight: bold ;
     font-family: 'Poiret One';
     font-size: 3rem;
-    color: darkseagreen;
+    color: #4a4a4a;
 }
 
 .shopping_container {
@@ -340,7 +343,7 @@ input {
     background-color: #fff !important;
     background-clip: border-box !important;
     border-radius: 10px !important;
-    margin: 10px !important;
+    margin: 3% !important;
     transition: all linear 0.5s;
     background-color: lightblue;
 }
@@ -395,13 +398,30 @@ list-lists {
   list-style: none;
   padding: 0;
 }
-item-lists {
-  padding-left: 1.3em;
-}
+
 item-lists:before {
   content: "\f00c"; /* FontAwesome Unicode */
   font-family: FontAwesome;
   display: inline-block;
   margin-left: -1.3em; /* same as padding-left set on li */
   width: 1.3em; /* same as padding-left set on li */
+}
+
+#item-lists:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+#item-lists{
+    font-size: 14px;
+    cursor: pointer;
+    padding-left: 1.3em;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    /*background: #eee;*/
+    transition: 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

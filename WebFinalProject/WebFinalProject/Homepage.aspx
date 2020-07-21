@@ -95,7 +95,7 @@
                         <div class="list-name">
                                 <input type="text" class="form-control " id="add-list-name" placeholder="My List" onclick="addListName"/>
                         </div>
-                           <i class="fa fa-save form-control-feedback" style="color: cornflowerblue;" onclick="SaveList()"></i>
+                           <i class="fa fa-save form-control-feedback" style="color: #87b189;" onclick="SaveList()"></i>
                          </div>
                         <div class="row">
                             <div class="simple">
@@ -115,7 +115,7 @@
             </div>
             <div class="lists">
             <h2 id="lists-headline">My Lists</h2>
-            <div class="card"> 
+            <div"> 
                 <ul class="list-lists">
              <li class="item-lists">first</li>
                 </ul>
@@ -187,7 +187,7 @@
             function addItem(text, status, id, noUpdate) {
                 var id = id ? id : generateID();
                 var c = status === "done" ? "danger" : "";
-                var item = '<li data-id="' + id + '" class="animated flipInX ' + c + '"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
+                var item = '<li class=task_item data-id="' + id + '" class="animated flipInX ' + c + '"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
                   text + "</label></div></li>";
 
                 var isError = $("#add-item").hasClass("hidden");
@@ -430,7 +430,7 @@
 
 
             // Create a "close" button and append it to each list item
-            var myNodelist = document.getElementsByTagName("LI");
+            var myNodelist = document.getElementsByTagName("task_item");
             var i;
             for (i = 0; i < myNodelist.length; i++) {
                 var span = document.createElement("SPAN");
