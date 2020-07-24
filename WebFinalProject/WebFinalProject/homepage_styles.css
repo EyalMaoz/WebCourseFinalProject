@@ -3,43 +3,38 @@
 
 .item1 {
     grid-area: header;
-
 }
 
 .item2 {
     grid-area: menu;
-
 }
 
 .item3 {
     Grid-template-rows: 1fr 2fr 10fr;
     grid-area: main;
     display: grid;
-    grid-template-areas:  
-        "buttons lists"
-        "today lists"
-        "list-card lists";
+    grid-template-areas: "buttons lists" "today lists" "list-card lists";
 }
 
-.lists{
+.lists {
     border-left: solid 2px #d0d3d6;
     grid-area: lists;
     background-color: #9e968a33;
     border-left: solid 2px #d0d3d6;
 }
 
-.buttons{
+.buttons {
     grid-area: buttons;
 }
 
-.list-card{
+.list-card {
     grid-area: list-card;
 }
 
-.today{
+.today {
     text-align: center;
     grid-area: today;
-    margin:5% 0%;
+    margin: 5% 0%;
     color: #87b189;
     font-weight: bold;
     margin-bottom: 15px;
@@ -47,9 +42,9 @@
     font-size: 3rem;
 }
 
-#lists-headline{
+#lists-headline {
     margin: 8% 36%;
-    font-weight: bold ;
+    font-weight: bold;
     font-family: 'Poiret One';
     font-size: 3rem;
     color: #4a4a4a;
@@ -81,7 +76,7 @@
     display: grid;
     height: 100vh;
     width: 100vw;
-    grid-template-areas: 'header header header header header header' 'menu main main main main main' ;
+    grid-template-areas: 'header header header header header header' 'menu main main main main main';
     grid-gap: 2px;
     background-color: #d0d3d6;
     padding: 2px;
@@ -318,21 +313,20 @@ input {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     grid-auto-rows: auto;
-    margin-left:3%;
+    margin-left: 3%;
     margin-top: 3%;
-
 }
 
 .ng-hide {
-  height: 0;
-  width: 0;
-  background-color: transparent;
-  top:-200px;
-  left: 200px;
+    height: 0;
+    width: 0;
+    background-color: transparent;
+    top: -200px;
+    left: 200px;
 }
 
 .card {
-    display:flex !important;
+    display: flex;
     box-shadow: 3px 2px 5px 0px #c3c3c3 !important;
     position: relative !important;
     display: -ms-flexbox !important;
@@ -376,12 +370,12 @@ input {
 }
 
 
-.list-name{
-    display:inline-flex;
+.list-name {
+    display: inline-flex;
 }
 
-#add-list-name{
-    margin: 10px!important;
+#add-list-name {
+    margin: 10px !important;
     color: darkslategrey;
     width: 100% !important;
     font-family: 'Poiret One' !important;
@@ -391,27 +385,26 @@ input {
     background-color: none;
     box-shadow: none;
     padding-right: 42.5px;
-
 }
 
 list-lists {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 item-lists:before {
-  content: "\f00c"; /* FontAwesome Unicode */
-  font-family: FontAwesome;
-  display: inline-block;
-  margin-left: -1.3em; /* same as padding-left set on li */
-  width: 1.3em; /* same as padding-left set on li */
+    content: "\f00c"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
 }
 
 #item-lists:nth-child(odd) {
     background: #f9f9f9;
 }
 
-#item-lists{
+#item-lists {
     font-size: 14px;
     cursor: pointer;
     padding-left: 1.3em;
