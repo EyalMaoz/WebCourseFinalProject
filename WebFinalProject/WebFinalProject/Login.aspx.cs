@@ -33,7 +33,8 @@ namespace WebFinalProject
                     var user = db.user.Where(tempAccount => tempAccount.userName.Equals(email.Text) && tempAccount.password.Equals(password.Text)).FirstOrDefault();
                     if (user == null)
                     {
-                        worngEmailPass.Visible = true;
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowInvalidateCredentials()", true);
+                        //worngEmailPass.Visible = true;
                     }
                     else
                     {
@@ -44,7 +45,8 @@ namespace WebFinalProject
             }
             catch(Exception)
             {
-                worngEmailPass.Visible = true;
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowInvalidateCredentials()", true);
+                //worngEmailPass.Visible = true;
             }
 
         }
