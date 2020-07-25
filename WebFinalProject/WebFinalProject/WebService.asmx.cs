@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using Newtonsoft.Json;
+using System.Data.Entity.Validation;
+
 
 namespace WebFinalProject
 {
@@ -16,10 +19,57 @@ namespace WebFinalProject
     // [System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
-
-        void SaveTasks(string tasksArray)
+        [WebMethod(EnableSession = true)]
+        public string LoadTasks()
         {
+            try
+            {
+                using (var db = new webProjectEntities())
+                {
+                    var userName = ((user)Session["Account"]).userName;
+                    user account = db.user.FirstOrDefault(u => u.userName == userName);
+                    return account.tasks;
+                }
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+                return null;
+            }
+        }
+        [WebMethod(EnableSession = true)]
+        public void SaveTasks(string tasksArray)
+        {
+            try
+            {
+                using (var db = new webProjectEntities())
+                {
 
+                    var tasksTable = JsonConvert.DeserializeObject(tasksArray);
+                    var tasksTablejson = JsonConvert.DeserializeObject(tasksTable.ToString());
+                    var userName = ((user)Session["Account"]).userName;
+                    user account = db.user.FirstOrDefault(u => u.userName == userName);
+                    account.tasks = tasksTablejson.ToString();
+                    Session["Account"] = account;
+                    db.SaveChanges();
+                }
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
     }
 }

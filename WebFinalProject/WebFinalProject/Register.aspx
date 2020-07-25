@@ -82,19 +82,19 @@
         $('form').addClass('up');
         console.log("pass");
     });
-    $('#password').focusout(function () {
+    /*$('#password').focusout(function () {
         $('form').removeClass('up');
         console.log("pass1");
-    });
+    });*/
 
     $('#password2').focusin(function () {
         $('form').addClass('up');
         console.log("pass12");
     });
-    $('#password2').focusout(function () {
+    /*$('#password2').focusout(function () {
         $('form').removeClass('up');
         console.log("pass123");
-    });
+    });*/
 
     // Panda Eye move
     $(document).on("mousemove", function (event) {

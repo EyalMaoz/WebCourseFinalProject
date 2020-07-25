@@ -28,7 +28,7 @@ namespace WebFinalProject
             {
                 if (!(password.Text.Equals(password2.Text)))
                 {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "Password and Confirm Password don't match, please enter the same password", true);
+                    //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "Password and Confirm Password don't match, please enter the same password", true);
                 }
                 else
                 {
@@ -44,6 +44,8 @@ namespace WebFinalProject
                         email.Text = "";
                         password.Text = "";
                         password2.Text = "";
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
+                        Response.Redirect("Login.aspx");
                     }
                     catch (Exception)
                     {

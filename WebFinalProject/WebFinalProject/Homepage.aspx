@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<%--    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>--%>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="shopping_list.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
     <script src="https://kit.fontawesome.com/56942480bb.js" crossorigin="anonymous"></script>
@@ -31,7 +30,7 @@
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-  
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <title>Panda Helper</title>
 
 </head>
@@ -50,11 +49,7 @@
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     </ul>
                     <div id="rightNav">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control1 mr-sm-2 form-control" type="search" placeholder="Search" aria-label="Search" />
-                            <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
-                        </form>
-                        <a class="navbar-brand logout-btn" href="#"><i class="fa fa-sign-out" style="padding-right: 10px"></i>Logout</a>
+                        <a class="navbar-brand logout-btn" href="#" onclick="Logout()"><i class="fa fa-sign-out" style="padding-right: 10px"></i>Logout</a>
                     </div>
                 </div>
             </nav>
@@ -62,9 +57,8 @@
 
         <div class="item2">
             <div class="sidebar">
-                <a href="#home"><i class="fa fa-tasks my-fa"></i>Today</a>
-                <a href="#services"><i class="fa fa-calendar-check-o my-fa"></i>Calendar</a>
-                <a href="#clients"><i class="fa fa-fw fa-user my-fa"></i>Help</a>
+                <a href="#home"><i class="fa fa-tasks my-fa"></i>My Lists</a>
+                <a href="#help"><i class="fa fa-fw fa-user my-fa"></i>Help</a>
                 <a href="#contact" ng-click="contact_page"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</a>
             </div>
         </div>
@@ -73,7 +67,6 @@
         <div class="item3">
             <div class="buttons">
                 <button class="btn btn-primary btn-sm add-list-buttons" onclick="addSideList()">Add New List</button>
-                <button class="btn btn-primary btn-sm add-list-buttons">Filter</button>
             </div>
             <div class="today"></div>
             <div class="list-card" id="allListsIDParent">
@@ -94,23 +87,32 @@
 
         <!-- functions for the ToDoLists -->
         <script>
-            CurrentTodoID = 0;
+
+            var CurrentListName = "New List";
+            var CurrentTodoID = 0;
+            var DefaultTask = {
+                "id": generateID(),
+                "text": "Example Task",
+                "isDone": "new",
+                "listID": "0",// Replace those according to list
+                "listName": ""//
+            };
 
             var Tasks = [
-                //First List
-                { "id": "0", "text": "task 1 in list 1", "isDone": "new", "listID": "0", "listName": "First List" },
-                { "id": "1", "text": "task 2 in list 1", "isDone": "new", "listID": "0", "listName": "First List" },
-                { "id": "2", "text": "task 3 in list 1", "isDone": "new", "listID": "0", "listName": "First List" },
+                ////First List
+                //{ "id": "0", "text": "task 1 in list 1", "isDone": "new", "listID": "0", "listName": "First List" },
+                //{ "id": "1", "text": "task 2 in list 1", "isDone": "new", "listID": "0", "listName": "First List" },
+                //{ "id": "2", "text": "task 3 in list 1", "isDone": "new", "listID": "0", "listName": "First List" },
 
-                //Second list
-                { "id": "0", "text": "task 1 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
-                { "id": "1", "text": "task 2 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
-                { "id": "2", "text": "task 3 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
-                { "id": "3", "text": "task 4 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
+                ////Second list
+                //{ "id": "0", "text": "task 1 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
+                //{ "id": "1", "text": "task 2 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
+                //{ "id": "2", "text": "task 3 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
+                //{ "id": "3", "text": "task 4 in list 2", "isDone": "done", "listID": "1", "listName": "Second List" },
 
             ];
 
-            function chooseList(id) {
+            function chooseList(id, name) {
                 var old = document.getElementById("card" + CurrentTodoID);
                 if (old != undefined) {
                     old.style.display = "none";
@@ -120,33 +122,32 @@
                     newd.style.display = "flex";
                 }
                 CurrentTodoID = id;
-
+                CurrentListName = name.split("\n")[1];
             }
 
             function CreateLists() {
                 var alreadyCreated = [];
 
-                $.each(Tasks, function (index, task) {
+                $.each(Tasks, function (index) {
 
                     if (alreadyCreated.indexOf(Tasks[index].listID) == -1) {
                         // CreateListHTML(Tasks[index].listID, Tasks[index].listName);
-                        addSideList(Tasks[index].listID, Tasks[index].listName);
+                        addSideList(Tasks[index].listID, Tasks[index].listName, false);
                         alreadyCreated.push(Tasks[index].listID);
                     }
-
-                    addTask(Tasks[index].text, Tasks[index].isDone, Tasks[index].listID, Tasks[index].id, true);
-                    isFirst = false;
+                    addTask(Tasks[index].text, Tasks[index].isDone, Tasks[index].listID, Tasks[index].id, true, Tasks[index].listName, false);
                 });
             }
 
             isFirst = true;
-            function CreateListHTML(todoId, ListName) {
+            function CreateListHTML(todoId, ListName, addDefaultTask) {
                 var style = isFirst ? "" : "style = 'display: none'";
                 if (isFirst) CurrentTodoID = todoId;
                 var div = document.createElement("div");
                 div.setAttribute("class", "card");
                 if (!isFirst) div.setAttribute("style", "display: none");
                 div.setAttribute("id", "card" + todoId);
+                isFirst = false;
                 var html = `<div class="new-list">
                         <div>
                             <div class="list-name">
@@ -167,31 +168,12 @@
                             </div>
                         </div>
                     </div>`
-                //var html = `<div class="card" ${style} id=card${todoId}>
-                //    <div class="new-list">
-                //        <div>
-                //            <div class="list-name">
-                //                <input type="text" class ="form-control " value = \"${ListName}\" id="add-list-name" placeholder="My List" />
-                //            </div>
-                //        </div>
-                //        <div class="row">
-                //            <div class="simple">
-                //                <div class="add-control">
-                //                    <div class="form-group has-feedback">
-                //                        <input type="text" class ="form-control" id="add-item" placeholder="Add a task..."/>
-                //                        <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
-                //                    </div>
-                //                </div>
-                //                <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter name item</p>
-                //                <ul class ="todo-list" id=${"todo" + todoId}>
-                //                </ul>
-                //            </div>
-                //        </div>
-                //    </div>
-                //</div>`
+
                 div.innerHTML = html;
-                //document.getElementById("allListsIDParent").innerHTML += html;
                 document.getElementById("allListsIDParent").appendChild(div);
+
+                if (addDefaultTask) addTask(DefaultTask.text, DefaultTask.isDone, todoId, DefaultTask.id, true, ListName, true);
+
                 SetEvents();
             }
 
@@ -199,16 +181,15 @@
                 document.getElementById("card" + todoId).remove();
             }
 
-
-
-            function addSideList(id, name) {
+            function addSideList(id, name, addDefaultTask) {
                 if (id == undefined) id = generateID();
                 if (name == undefined) name = "New List";
+                if (addDefaultTask == undefined) addDefaultTask = true;
                 var ul = document.getElementById("listOflists");
                 var li = document.createElement("li");
                 li.setAttribute("class", "item-lists");
                 li.setAttribute("id", id);
-                li.setAttribute("onclick", "chooseList(this.id)");
+                li.setAttribute("onclick", "chooseList(this.id,this.innerText)");
                 var span = document.createElement("span");
                 span.setAttribute("class", 'close');
                 span.onclick = function () {
@@ -220,7 +201,7 @@
                 li.appendChild(span);
                 li.appendChild(document.createTextNode(name));
                 ul.appendChild(li);
-                CreateListHTML(id, name);
+                CreateListHTML(id, name, addDefaultTask);
             }
 
             function RemoveList(listID, listName) {
@@ -230,16 +211,17 @@
                         indices.push(i);
                     }
                 }
-                for (var i = 0; i < indices.length ; i++) {
+                for (var i = indices.length-1; i >=0  ; i--) {
                     Tasks.splice(indices[i], 1);
                 }
                 DeleteListHTML(listID);
             }
 
-            function addTask(text, status, todoID, id, noUpdate) {
+            function addTask(text, status, todoID, id, noUpdate, listName, addToTasks) {
                 var id = id ? id : generateID();
-                var c = status === "done" ? "danger" : "";
-                var item = '<li class=task_item data-id="' + id + '" class="animated flipInX ' + c + '"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
+                if (addToTasks == undefined) addToTasks = true;
+                var c = status == "done" ? "danger" : "";
+                var item = '<li class="task_item '+c+'" data-id="' + id + '" class="animated flipInX"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
                   text + "</label></div></li>";
 
                 var isError = $(".add-item").hasClass("hidden");
@@ -257,10 +239,6 @@
                     $("#todo" + todoID).append(item);
                 }
 
-               // $(".refresh").removeClass("hidden");
-
-
-
                 $(".add-item")
                   .val("")
                   .attr("placeholder", "Add a task...");
@@ -268,6 +246,20 @@
                     $(".todo-list li").removeClass("animated flipInX");
                 }, 500);
 
+                if (listName == undefined) {
+                    listName = CurrentListName;
+                }
+                if (addToTasks) {
+                    var thisTask =
+                        {
+                            "id": id,
+                            "text": text,
+                            "isDone": status,
+                            "listID": todoID,
+                            "listName": listName
+                        };
+                    Tasks.push(thisTask);
+                }
             }
 
             // Events Handlers
@@ -282,7 +274,6 @@
                 $(".add-btn").on("click", AddButton);
                 $(".add-item").keypress(AddWithEnter);
                 $(".add-list-name").on("focusout", ChangeListName);
-
             }
 
             function ChangeListName(e) {
@@ -293,7 +284,8 @@
                     }
                 });
                 // update side list
-                document.getElementById(CurrentTodoID).textContent = newName;
+                document.getElementById(CurrentTodoID).childNodes[1].nodeValue = newName;
+                CurrentListName = newName;
             }
 
             function AddButton(e) {
@@ -315,14 +307,21 @@
                  .parent()
                  .parent()
                  .parent();
+
                 li.toggleClass("danger");
                 li.toggleClass("animated flipInX");
-
-                setToDone(li.data().id);
 
                 setTimeout(function () {
                     li.removeClass("animated flipInX");
                 }, 500);
+
+                var taskId = $(this).parent().parent().parent()[0].attributes["data-id"].nodeValue;
+                $.each(Tasks, function (index) {
+                    if (Tasks[index].id == taskId) {
+                        Tasks[index].isDone = Tasks[index].isDone == "new" ? "done" : "new";
+                        return;
+                    }
+                });
             }
 
             function ClickOnTaskCloseButton() {
@@ -345,9 +344,6 @@
                 }
                 deleteTodo(box.data().id);
             }
-            //
-
-            //var state = [];
 
             function generateID() {
                 var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -363,22 +359,8 @@
                 }
             }
 
-
-            //function refresh() {
-            //    $(".todo-list li").each(function (i) {
-            //        $(this)
-            //          .delay(70 * i)
-            //          .queue(function () {
-            //              $(this).addClass("animated bounceOutLeft");
-            //              $(this).dequeue();
-            //          });
-            //    });
-            //}
-
-
             $(document).ready(function () {
-
-                CreateLists();
+                LoadTasks();
 
                 todayContainer.innerHTML = randomWord + n;
 
@@ -394,11 +376,7 @@
                 $(".todo-list").sortable()
                 $(".todo-list").disableSelection();
 
-                $(".refresh").on("click", refresh);
-
             });
-
-
 
             // Create a "close" button and append it to each list item
             var myNodelist = document.getElementsByTagName("task_item");
@@ -431,25 +409,42 @@
 
 
             // function isnt activated 
-            function logout() {
-                SaveTasks();
-                Response.Redirect("Login.aspx");
-            }
-
-
-            function SaveTasks() {
+            function Logout() {
                 $.ajax({
                     url: "webservice.asmx/SaveTasks",
                     data: { tasksArray: JSON.stringify(Tasks) },
                     dataType: 'json',
                     type: 'POST',
                     success: function (res) {
+                        window.location.replace("http://localhost:20200/Login.aspx");
                     },
                     error: function (er) {
-
+                        if(er.status ==200)
+                            window.location.replace("http://localhost:20200/Login.aspx");
                     }
                 }).done();
             }
+
+            function LoadTasks() {
+                $.ajax({
+                    url: "webservice.asmx/LoadTasks",
+                    type: 'GET',
+                    success: function (res) {
+                        if (res.documentElement.innerHTML == "")
+                        {
+                            var ListId = generateID();
+                            Tasks = [{ "id": "0", "text": "Add new list", "isDone": "done", "listID": ListId, "listName": "First List" },
+                                { "id": "0", "text": "Mark task as checked", "isDone": "new", "listID": ListId, "listName": "First List" }]
+                        }
+                        else Tasks = JSON.parse(res.documentElement.innerHTML);
+                        CreateLists();
+                    },
+                    error: function (er) {
+                        console.log(er);
+                    }
+                });
+            }
+
 
             // Day stuff:
             var todayContainer = document.querySelector(".today");

@@ -15,6 +15,7 @@ namespace WebFinalProject
         {
             if (!IsPostBack)
             {
+                Session["Account"] = null;
             }
         }
 
@@ -38,7 +39,7 @@ namespace WebFinalProject
                     }
                     else
                     {
-                        Session["user"] = user.userName;
+                        Session["Account"] = user;
                         Response.Redirect("Homepage.aspx");
                     }
                 }
