@@ -374,7 +374,7 @@ input {
     display: inline-flex;
 }
 
-#add-list-name {
+.add-list-name {
     margin: 10px !important;
     color: darkslategrey;
     width: 100% !important;

@@ -5,10 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <%--    <link rel="stylesheet" type="text/css" href="homepage_styles.css" >--%>
     <link href="homepage_styles.css" rel="stylesheet" type="text/css" runat="server" />
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -16,14 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>--%>
     <link rel="stylesheet" type="text/css" href="shopping_list.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
     <script src="https://kit.fontawesome.com/56942480bb.js" crossorigin="anonymous"></script>
-    <%--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>--%>
-    <%--<script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>--%>
+
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <link rel="shortcut icon" href="todost.png">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
@@ -31,21 +25,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css'>
-    <%--<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>--%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.0/angular.js"> </script>
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Bootstrap core CSS -->
-    <%--<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
-    <!--external css-->
-    <%--<link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />--%>
-
-    <%--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--%>
-    <%--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>--%>
-    <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>--%>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  
     <title>Panda Helper</title>
 
 </head>
@@ -65,7 +51,7 @@
                     </ul>
                     <div id="rightNav">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control1 mr-sm-2 form-control" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control1 mr-sm-2 form-control" type="search" placeholder="Search" aria-label="Search" />
                             <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
                         </form>
                         <a class="navbar-brand logout-btn" href="#"><i class="fa fa-sign-out" style="padding-right: 10px"></i>Logout</a>
@@ -152,42 +138,68 @@
                     isFirst = false;
                 });
             }
+
             isFirst = true;
             function CreateListHTML(todoId, ListName) {
                 var style = isFirst ? "" : "style = 'display: none'";
                 if (isFirst) CurrentTodoID = todoId;
-                
-                var html = `<div class="card" ${style} id=card${todoId}>
-                    <div class="new-list">
+                var div = document.createElement("div");
+                div.setAttribute("class", "card");
+                if (!isFirst) div.setAttribute("style", "display: none");
+                div.setAttribute("id", "card" + todoId);
+                var html = `<div class="new-list">
                         <div>
                             <div class="list-name">
-                                <input type="text" class ="form-control " value = \"${ListName}\" id="add-list-name" placeholder="My List" />
+                                <input type="text" class ="form-control add-list-name" value = \"${ListName}\" placeholder="My List" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="simple">
                                 <div class="add-control">
                                     <div class="form-group has-feedback">
-                                        <input type="text" class ="form-control" id="add-item" placeholder="Add a task..."/>
+                                        <input type="text" class ="form-control add-item" id = "input${todoId}" placeholder="Add a task..."/>
                                         <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
                                     </div>
                                 </div>
-                                <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter name item</p>
+                                <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter task</p>
                                 <ul class ="todo-list" id=${"todo" + todoId}>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>`
-                var div = document.createElement("div");
+                    </div>`
+                //var html = `<div class="card" ${style} id=card${todoId}>
+                //    <div class="new-list">
+                //        <div>
+                //            <div class="list-name">
+                //                <input type="text" class ="form-control " value = \"${ListName}\" id="add-list-name" placeholder="My List" />
+                //            </div>
+                //        </div>
+                //        <div class="row">
+                //            <div class="simple">
+                //                <div class="add-control">
+                //                    <div class="form-group has-feedback">
+                //                        <input type="text" class ="form-control" id="add-item" placeholder="Add a task..."/>
+                //                        <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
+                //                    </div>
+                //                </div>
+                //                <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i>Oops! Please, enter name item</p>
+                //                <ul class ="todo-list" id=${"todo" + todoId}>
+                //                </ul>
+                //            </div>
+                //        </div>
+                //    </div>
+                //</div>`
                 div.innerHTML = html;
                 //document.getElementById("allListsIDParent").innerHTML += html;
                 document.getElementById("allListsIDParent").appendChild(div);
+                SetEvents();
             }
 
             function DeleteListHTML(todoId) {
                 document.getElementById("card" + todoId).remove();
             }
+
+
 
             function addSideList(id, name) {
                 if (id == undefined) id = generateID();
@@ -230,73 +242,119 @@
                 var item = '<li class=task_item data-id="' + id + '" class="animated flipInX ' + c + '"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
                   text + "</label></div></li>";
 
-                var isError = $("#add-item").hasClass("hidden");
+                var isError = $(".add-item").hasClass("hidden");
 
                 if (text === "") {
                     $(".err")
                       .removeClass("hidden")
                       .addClass("animated bounceIn");
+                    setTimeout(function () {
+                        $(".err").addClass("hidden");
+                    }, 2000);
                 } else {
                     $(".err").addClass("hidden");
 
                     $("#todo" + todoID).append(item);
                 }
 
-                $(".refresh").removeClass("hidden");
+               // $(".refresh").removeClass("hidden");
 
 
 
-                $("#add-item")
+                $(".add-item")
                   .val("")
                   .attr("placeholder", "Add a task...");
                 setTimeout(function () {
                     $(".todo-list li").removeClass("animated flipInX");
                 }, 500);
 
-                if (!noUpdate) {
-                    pushToState(text, "new", id);
+            }
+
+            // Events Handlers
+            function SetEvents() {
+                $(".add-btn").off("click");
+                $(".add-item").off("keypress");
+                $(".todo-list").off("click");
+                $(".add-list-name").off("click");
+
+                $(".todo-list").on("click", 'input[type="checkbox"]', ClickOnTaskCheckBox);
+                $(".todo-list").on("click", ".close", ClickOnTaskCloseButton);
+                $(".add-btn").on("click", AddButton);
+                $(".add-item").keypress(AddWithEnter);
+                $(".add-list-name").on("focusout", ChangeListName);
+
+            }
+
+            function ChangeListName(e) {
+                newName = e.currentTarget.value;
+                $.each(Tasks, function (index) {
+                    if (Tasks[index].listID == CurrentTodoID) {
+                        Tasks[index].listName = newName;
+                    }
+                });
+                // update side list
+                document.getElementById(CurrentTodoID).textContent = newName;
+            }
+
+            function AddButton(e) {
+                var itemVal = document.getElementById("input" + CurrentTodoID).value;
+                addTask(itemVal, "new", CurrentTodoID);
+                $(".add-item").focus();
+            }
+
+            function AddWithEnter(e) {
+                if (e.which == 13) {
+                    var itemVal = document.getElementById("input" + CurrentTodoID).value;
+                    addTask(itemVal, "new", CurrentTodoID);
+                    $(".add-item").focus();
                 }
             }
 
-            var state = [];
+            function ClickOnTaskCheckBox() {
+                var li = $(this)
+                 .parent()
+                 .parent()
+                 .parent();
+                li.toggleClass("danger");
+                li.toggleClass("animated flipInX");
 
-            function setDefaultState() {
-                var id = generateID();
-                var baseState = {};
-                baseState[id] = {
-                    status: "new",
-                    id: id,
-                    title: "Go to the store"
-                };
-                syncState(baseState);
+                setToDone(li.data().id);
+
+                setTimeout(function () {
+                    li.removeClass("animated flipInX");
+                }, 500);
             }
+
+            function ClickOnTaskCloseButton() {
+                var box = $(this)
+                 .parent()
+                 .parent();
+
+                if ($(".todo-list li").length == 1) {
+                    box.removeClass("animated flipInX").addClass("animated bounceOutLeft");
+                    setTimeout(function () {
+                        box.remove();
+
+                        $(".refresh").addClass("hidden");
+                    }, 500);
+                } else {
+                    box.removeClass("animated flipInX").addClass("animated bounceOutLeft");
+                    setTimeout(function () {
+                        box.remove();
+                    }, 500);
+                }
+                deleteTodo(box.data().id);
+            }
+            //
+
+            //var state = [];
 
             function generateID() {
                 var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
                 return randLetter + Date.now();
             }
 
-            function pushToState(title, status, id) {
-                var baseState = getState();
-                baseState[id] = { id: id, title: title, status: status };
-                syncState(baseState);
-            }
-
-            function setToDone(id) {
-                var baseState = getState();
-                if (baseState[id].status === 'new') {
-                    baseState[id].status = 'done'
-                } else {
-                    baseState[id].status = 'new';
-                }
-
-                syncState(baseState);
-            }
-
             function deleteTodo(id) {
-                var baseState = getState();
-                delete baseState[id];
-                syncState(baseState);
                 for (var i = 0; i < Tasks.length ; i++) {
                     if (Tasks[i].id == id && Tasks[i].listID == CurrentTodoID) {
                         Tasks.splice(i, 1);
@@ -305,33 +363,17 @@
                 }
             }
 
-            function resetState() {
-                localStorage.setItem("state", null);
-            }
 
-            function syncState(state) {
-                localStorage.setItem("state", JSON.stringify(state));
-            }
-
-            function getState() {
-                return JSON.parse(localStorage.getItem("state"));
-            }
-
-            function refresh() {
-                $(".todo-list li").each(function (i) {
-                    $(this)
-                      .delay(70 * i)
-                      .queue(function () {
-                          $(this).addClass("animated bounceOutLeft");
-                          $(this).dequeue();
-                      });
-                });
-
-                setTimeout(function () {
-                    $(".todo-list li").remove();
-                    $(".err").addClass("hidden");
-                }, 800);
-            }
+            //function refresh() {
+            //    $(".todo-list li").each(function (i) {
+            //        $(this)
+            //          .delay(70 * i)
+            //          .queue(function () {
+            //              $(this).addClass("animated bounceOutLeft");
+            //              $(this).dequeue();
+            //          });
+            //    });
+            //}
 
 
             $(document).ready(function () {
@@ -339,8 +381,9 @@
                 CreateLists();
 
                 todayContainer.innerHTML = randomWord + n;
+
                 var err = $(".err"),
-                  formControl = $("#add-item");
+                  formControl = $(".add-item");
                 isError = formControl.hasClass("hidden");
 
                 if (!isError) {
@@ -348,144 +391,11 @@
                         err.addClass("hidden");
                     });
                 }
-
+                $(".todo-list").sortable()
+                $(".todo-list").disableSelection();
 
                 $(".refresh").on("click", refresh);
 
-                $(".todo-list").on("click", 'input[type="checkbox"]', function () {
-                    var li = $(this)
-                      .parent()
-                      .parent()
-                      .parent();
-                    li.toggleClass("danger");
-                    li.toggleClass("animated flipInX");
-
-                    setToDone(li.data().id);
-
-                    setTimeout(function () {
-                        li.removeClass("animated flipInX");
-                    }, 500);
-                });
-
-                $(".todo-list").on("click", ".close", function () {
-                    var box = $(this)
-                      .parent()
-                      .parent();
-
-                    if ($(".todo-list li").length == 1) {
-                        box.removeClass("animated flipInX").addClass("animated                bounceOutLeft");
-                        setTimeout(function () {
-                            box.remove();
-
-                            $(".refresh").addClass("hidden");
-                        }, 500);
-                    } else {
-                        box.removeClass("animated flipInX").addClass("animated bounceOutLeft");
-                        setTimeout(function () {
-                            box.remove();
-                        }, 500);
-                    }
-                    deleteTodo(box.data().id)
-                });
-
-                $(".add-btn").on("click", function () {
-                    var itemVal = $("#add-item").val();
-                    addTask(itemVal, "new", CurrentTodoID);
-                    $("#add-item").focus();
-                });
-
-                $("#add-item").keypress(function (e) {
-                    if (e.which == 13) {
-                        var itemVal = $("#add-item").val();
-                        addTask(itemVal, "new", CurrentTodoID);
-                        $("#add-item").focus();
-                    }
-                });
-                //$(".todo-list").sortable();
-                //$(".todo-list").disableSelection();
-
-                // Eyal - Load from browser if we want:
-                /*var state = getState();
-
-                if (!state) {
-                    setDefaultState();
-                    state = getState();
-                }
-
-                Object.keys(state).forEach(function (todoKey) {
-                    var todo = state[todoKey];
-                    addTask(todo.title, todo.status, todo.id, true);
-                });*/
-
-                var mins, secs, update;
-
-                init();
-                function init() {
-                    (mins = 25), (secs = 59);
-                }
-
-
-                set();
-                function set() {
-                    $(".mins").text(mins);
-                }
-
-
-                $("#start").on("click", start_timer);
-                $("#reset").on("click", reset);
-                $("#inc").on("click", inc);
-                $("#dec").on("click", dec);
-
-                function start_timer() {
-
-                    set();
-
-                    $(".dis").attr("disabled", true);
-
-                    $(".mins").text(--mins);
-                    $(".separator").text(":");
-                    update_timer();
-
-                    update = setInterval(update_timer, 1000);
-                }
-
-                function update_timer() {
-                    $(".secs").text(secs);
-                    --secs;
-                    if (mins == 0 && secs < 0) {
-                        reset();
-                    } else if (secs < 0 && mins > 0) {
-                        secs = 59;
-                        --mins;
-                        $(".mins").text(mins);
-                    }
-                }
-
-
-                function reset() {
-                    clearInterval(update);
-                    $(".secs").text("");
-                    $(".separator").text("");
-                    init();
-                    $(".mins").text(mins);
-                    $(".dis").attr("disabled", false);
-                }
-
-
-                function inc() {
-                    mins++;
-                    $(".mins").text(mins);
-                }
-
-
-                function dec() {
-                    if (mins > 1) {
-                        mins--;
-                        $(".mins").text(mins);
-                    } else {
-                        alert("This is the minimum limit.");
-                    }
-                }
             });
 
 
@@ -518,10 +428,6 @@
                     ev.target.classList.toggle('checked');
                 }
             }, false);
-
-
-
-
 
 
             // function isnt activated 
