@@ -9,14 +9,6 @@ namespace WebFinalProject
 {
     public partial class Register : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                //all code in page_load
-            }
-        }
-
         protected void login_page(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
@@ -28,33 +20,49 @@ namespace WebFinalProject
             {
                 if (!(password.Text.Equals(password2.Text)))
                 {
-                    //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "Password and Confirm Password don't match, please enter the same password", true);
+                    Response.Write("<script>alert('Password doesnt match')</script>");
+                    return;
                 }
-                else
+                if (!IsValidEmail(email.Text))
                 {
-                    var newUser = new user()
-                    {
-                        userName = email.Text,
-                        password = password.Text,
-                    };
-                    try
-                    {
-                        db.user.Add(newUser);
-                        db.SaveChanges();
-                        email.Text = "";
-                        password.Text = "";
-                        password2.Text = "";
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
-                        Response.Redirect("Login.aspx");
-                    }
-                    catch (Exception)
-                    {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "Email already exists, please choose a different email", true);
-                    }
+                    Response.Write("<script>alert('Email address is not valid')</script>");
+                    return;
                 }
+
+                var newUser = new user()
+                {
+                    userName = email.Text,
+                    password = password.Text,
+                };
+                try
+                {
+                    db.user.Add(newUser);
+                    db.SaveChanges();
+                    email.Text = "";
+                    password.Text = "";
+                    password2.Text = "";
+                    Response.Write("<script>alert('Registered Successfully')</script>");
+                    Response.Redirect("Login.aspx");
+                }
+                catch (Exception)
+                {
+                    Response.Write("<script>alert('Email already exists, please choose a different email')</script>");
+                }
+
             }
         }
 
-
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
-  }
+}

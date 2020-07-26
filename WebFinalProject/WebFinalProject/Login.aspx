@@ -4,6 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <style>
+        body {
+            background: #789279;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
     <title>Panda Helper</title>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
@@ -62,7 +69,7 @@
                 <div class="form-group">
                     <asp:TextBox runat="server" required="required" TextMode="SingleLine" type="password" class="form-control" ID="password" />
                     <asp:Label class="form-label" AssociatedControlID="password" Text="Password" runat="server" />
-                    <p class="alert">Invalid Credentials..!!</p>
+                    <p class="alert">Invalid Email or Password</p>
                 </div>
                 <div>
                     <asp:Label class="alert" ID="worngEmailPass" runat="server" Visible="false" Text="Wrong email or password"></asp:Label>
@@ -77,20 +84,6 @@
             <script>
                 $('#password').focusin(function () {
                     $('form').addClass('up');
-                    console.log("pass");
-                });
-                //$('#password').focusout(function () {
-                //    $('form').removeClass('up');
-                //    console.log("pass1");
-                //});
-
-                $('#password2').focusin(function () {
-                    $('form').addClass('up');
-                    console.log("pass12");
-                });
-                $('#password2').focusout(function () {
-                    $('form').removeClass('up');
-                    console.log("pass123");
                 });
 
                 // Panda Eye move
@@ -110,13 +103,7 @@
                         $('form').removeClass('wrong-entry');
                     }, 3000);
                 }
-                //// validation
-                //$('.btn').click(function () {
-                //    $('form').addClass('wrong-entry');
-                //    setTimeout(function () {
-                //        $('form').removeClass('wrong-entry');
-                //    }, 3000);
-                //});
+
             </script>
 
 

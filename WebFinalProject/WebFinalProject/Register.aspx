@@ -4,7 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Panda Helper</title>
+    <style>
+            body {
+            background: #83b484;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <title>Register Panda Helper</title>
+
      <!-- Required meta tags -->
      <meta charset="UTF-8">
      <%--bootstrapcdn - in google - this is the palce we took this link, for the css class--%>
@@ -66,7 +74,6 @@
   <div class="form-group">
   <asp:TextBox runat="server"  required="required" TextMode="SingleLine" type="password" class="form-control" ID="password2"/>
   <asp:Label class="form-label" AssociatedControlId="password2" Text="Confirm Password" runat="server" />
-  <p class="alert">Invalid Credentials..!!</p>
   <asp:Button class="btn" runat ="server" Text="Sign Up" onClick ="register"></asp:Button>
   </div>
   </form>
@@ -80,7 +87,6 @@
  <script>
     $('#password').focusin(function () {
         $('form').addClass('up');
-        console.log("pass");
     });
     /*$('#password').focusout(function () {
         $('form').removeClass('up');
@@ -89,13 +95,17 @@
 
     $('#password2').focusin(function () {
         $('form').addClass('up');
-        console.log("pass12");
     });
     /*$('#password2').focusout(function () {
         $('form').removeClass('up');
         console.log("pass123");
     });*/
+    function ShowAlert(text) {
+        alert("test")
+        var alertComponent = document.getElementById("test");
+        alertComponent.innerHTML = text;
 
+    }
     // Panda Eye move
     $(document).on("mousemove", function (event) {
         var dw = $(document).width() / 15;
@@ -107,14 +117,19 @@
             height: y
         });
     });
-
-    // validation
-    $('.btn').click(function () {
+    function ShowInvalidateCredentials() {
         $('form').addClass('wrong-entry');
         setTimeout(function () {
             $('form').removeClass('wrong-entry');
         }, 3000);
-    });
+    }
+    // validation - Eyal - this func make the form shake
+    //$('.btn').click(function () {
+    //    /*$('form').addClass('wrong-entry');
+    //    setTimeout(function () {
+    //        $('form').removeClass('wrong-entry');
+    //    }, 3000);*/
+    //});
 </script>
 
 </body>
