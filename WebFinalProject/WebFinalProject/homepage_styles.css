@@ -142,6 +142,7 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
     height: 100%;
+    width:fix
     z-index: 1;
     background-color: #fff;
     overflow-x: hidden;
@@ -151,7 +152,7 @@
 }
 
     /* Style sidebar links */
-    .sidebar a {
+    .sidebar p {
         font-family: 'Poiret One';
         font-weight: bold;
         padding: 6px 15px 15px 0px;
@@ -162,9 +163,10 @@
     }
 
         /* Style links on mouse-over */
-        .sidebar a:hover {
+        .sidebar p:hover {
             color: #85a687;
             text-decoration: none !important;
+            cursor: pointer;
         }
 
 /* Style the main content */

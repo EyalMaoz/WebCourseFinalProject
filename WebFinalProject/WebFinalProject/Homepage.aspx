@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
-<%--    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>--%>
+    <%--    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>--%>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -30,7 +30,7 @@
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <title>Panda Helper</title>
 
 </head>
@@ -57,14 +57,15 @@
 
         <div class="item2">
             <div class="sidebar">
-                <a href="#home"><i class="fa fa-tasks my-fa"></i>My Lists</a>
-                <a href="#help"><i class="fa fa-fw fa-user my-fa"></i>Help</a>
-                <a href="#contact" ng-click="contact_page"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</a>
+                <p onclick="MenuClick(0)"><i class="fa fa-tasks my-fa"></i>My Lists</p>
+                <p onclick="MenuClick(1)"><i class="fa fa-fw fa-user my-fa"></i>Help</p>
+                <p onclick="MenuClick(2)"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</p>
             </div>
         </div>
 
         <!-- Main container -->
-        <div class="item3">
+        <%--        My Lists page:      --%>
+        <div id="listPage" class="item3" style="display:grid">
             <div class="buttons">
                 <button class="btn btn-primary btn-sm add-list-buttons" onclick="addSideList()">Add New List</button>
             </div>
@@ -79,15 +80,26 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
+        <%--        Help page:      --%>
+        <div  id="helpPage" class="item3" style="display: none">
+            <p style ="color:#000000">Help Page</p>
+        </div>
+        <%--        Contact us page:      --%>
+        <div  id="contactUsPage" class="item3" style="display: none">
+            <p style ="color:#000000">Contact us Page</p>
+        </div>
 
         <!-- functions for the ToDoLists -->
         <script>
 
+            function MenuClick(pageNum) {
+                pageArr[0].style.display = "none";
+                pageArr[1].style.display = "none";
+                pageArr[2].style.display = "none";
+                pageArr[pageNum].style.display = "grid";
+            }
+
+            var pageArr;
             var CurrentListName = "New List";
             var CurrentTodoID = 0;
             var DefaultTask = {
@@ -168,7 +180,7 @@
                             </div>
                         </div>
                     </div>`
-
+                
                 div.innerHTML = html;
                 document.getElementById("allListsIDParent").appendChild(div);
 
@@ -211,7 +223,7 @@
                         indices.push(i);
                     }
                 }
-                for (var i = indices.length-1; i >=0  ; i--) {
+                for (var i = indices.length - 1; i >= 0  ; i--) {
                     Tasks.splice(indices[i], 1);
                 }
                 DeleteListHTML(listID);
@@ -221,7 +233,7 @@
                 var id = id ? id : generateID();
                 if (addToTasks == undefined) addToTasks = true;
                 var c = status == "done" ? "danger" : "";
-                var item = '<li class="task_item '+c+'" data-id="' + id + '" class="animated flipInX"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
+                var item = '<li class="task_item ' + c + '" data-id="' + id + '" class="animated flipInX"><div class="checkbox my_checkbox"><span class="close"><i class="fa fa-times"></i></span><label><span class="checkbox-mask"></span><input type="checkbox" />' +
                   text + "</label></div></li>";
 
                 var isError = $(".add-item").hasClass("hidden");
@@ -261,7 +273,7 @@
                     Tasks.push(thisTask);
                 }
             }
-
+          
             // Events Handlers
             function SetEvents() {
                 $(".add-btn").off("click");
@@ -275,6 +287,20 @@
                 $(".add-item").keypress(AddWithEnter);
                 $(".add-list-name").on("focusout", ChangeListName);
             }
+            //$(window).bind("beforeunload", function () {
+            //    $(window).unbind("beforeunload");
+            //    return confirm("Do you really want to close?")
+            //})
+            //window.onbeforeunload = function (event) {
+            //    $.ajax({
+            //        type: 'POST',
+            //        url: 'webservice.asmx/SaveTasks',
+            //        dataType: 'json',
+            //        data: { tasksArray: JSON.stringify(Tasks) },
+            //        async: false
+            //    });
+
+            //};
 
             function ChangeListName(e) {
                 newName = e.currentTarget.value;
@@ -361,7 +387,10 @@
 
             $(document).ready(function () {
                 LoadTasks();
-
+                var listPage = document.getElementById("listPage");
+                var helpPage = document.getElementById("helpPage");
+                var contactUsPage = document.getElementById("contactUsPage");
+                pageArr = [listPage, helpPage, contactUsPage];
                 todayContainer.innerHTML = randomWord + n;
 
                 var err = $(".err"),
@@ -416,10 +445,11 @@
                     dataType: 'json',
                     type: 'POST',
                     success: function (res) {
+
                         window.location.replace("http://localhost:20200/Login.aspx");
                     },
                     error: function (er) {
-                        if(er.status ==200)
+                        if (er.status == 200)
                             window.location.replace("http://localhost:20200/Login.aspx");
                     }
                 }).done();
@@ -430,8 +460,7 @@
                     url: "webservice.asmx/LoadTasks",
                     type: 'GET',
                     success: function (res) {
-                        if (res.documentElement.innerHTML == "")
-                        {
+                        if (res.documentElement.innerHTML == "") {
                             var ListId = generateID();
                             Tasks = [{ "id": "0", "text": "Add new list", "isDone": "done", "listID": ListId, "listName": "First List" },
                                 { "id": "0", "text": "Mark task as checked", "isDone": "new", "listID": ListId, "listName": "First List" }]
