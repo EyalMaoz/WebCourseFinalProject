@@ -31,6 +31,8 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+
     <title>Panda Helper</title>
 
 </head>
@@ -40,32 +42,30 @@
 
     <div class="grid-container">
         <div class="item1">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                    <span></span>
                 </button>
-                <a class="navbar-brand" id="pandalogo" href="#"></a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    </ul>
+                <a class="navbar-brand" id="pandalogo" onclick="MenuClick(0)"></a>
+                <div class=" navbar-collapse" id="navbarTogglerDemo03">
                     <div id="rightNav">
-                        <a class="navbar-brand logout-btn" href="#" onclick="Logout()"><i class="fa fa-sign-out" style="padding-right: 10px"></i>Logout</a>
+
+                        <a class="navbar-brand logout-btn" onclick="Logout()"><i class="fa fa-sign-out" style="padding-right: 10px"></i>Logout</a>
                     </div>
                 </div>
             </nav>
         </div>
 
         <div class="item2">
-            <div class="sidebar">
+            <div class="sidebar" data-toggle="collapse">
                 <p onclick="MenuClick(0)"><i class="fa fa-tasks my-fa"></i>My Lists</p>
                 <p onclick="MenuClick(1)"><i class="fa fa-fw fa-user my-fa"></i>Help</p>
-                <p onclick="MenuClick(2)"><i class="fa fa-fw fa-envelope my-fa"></i>Contact Us</p>
+                <p onclick="MenuClick(2)"><i class="fa fa-fw fa-envelope my-fa"></i>About Us</p>
             </div>
         </div>
 
         <!-- Main container -->
         <%--        My Lists page:      --%>
-        <div id="listPage" class="item3" style="display:grid">
+        <div id="listPage" class="item3" style="display:grid ">
             <div class="buttons">
                 <button class="btn btn-primary btn-sm add-list-buttons" onclick="addSideList()">Add New List</button>
             </div>
@@ -73,21 +73,66 @@
             <div class="list-card" id="allListsIDParent">
             </div>
             <div class="lists">
-                <h2 id="lists-headline">My Lists</h2>
+                <h2 id="lists-headline" class="text-center"> <i class="fa fa-tasks my-fa"></i> My Lists</h2>
+            
                 <div>
                     <ul class="list-lists" id="listOflists">
+         
                     </ul>
                 </div>
             </div>
         </div>
         <%--        Help page:      --%>
-        <div  id="helpPage" class="item3" style="display: none">
+        <div  id="helpPage" class="item3" style="display: none; Grid-template-rows: none !important;">
             <p style ="color:#000000">Help Page</p>
         </div>
         <%--        Contact us page:      --%>
-        <div  id="contactUsPage" class="item3" style="display: none">
-            <p style ="color:#000000">Contact us Page</p>
-        </div>
+<div  id="contactUsPage" class="item4" style="display: none">
+             <!-- Begin Page Content -->
+
+ <div class="wrapper">
+<div class="about-section">
+  <h1 style="font-weight:bold">About Us</h1>
+   
+  <p style="font-family: 'Raleway', sans-serif;">Hi, We are Linoy and Eyal, <br /> We are software engineering students that wants to remember everything and to make your life easier <br/> so we build the PandaHelper to help us do it ! Hope you enjoy it!</p>
+</div>
+
+<div class="row">
+                <div class="team-section">
+                                    <h2 style="text-align:center; font-family: 'Poiret One'; font-weight:bold;">Our Team</h2>
+                  <div class="inner-width">
+
+                    <div class="pers">
+                      <div class="pe">
+                        <img src="https://i.ibb.co/7XLsXMX/Whats-App-Image-2020-07-26-at-13-04-29.jpg" alt="rafeh">
+                        <div class="p-name">Linoy Bar-Gal</div>
+                        <div class="p-des">Developer and Designer</div>
+                        <div class="p-sm">
+                          <a href="https://www.facebook.com/linoyb"><i class="fab fa-facebook-f"></i></a>
+                          <a href="https://www.instagram.com/linoybargal/"><i class="fab fa-instagram"></i></a>
+                          <a href="mailto:linoy18@gmail.com"><i class="fa fa-envelope"></i></a>
+                        </div>
+                      </div>
+
+                      <div class="pe">
+                        <img src="https://i.ibb.co/7p3xnGL/44793750-312043066073847-939891612333716360-n.jpg" alt="rafeh">
+                        <div class="p-name">Eyal Maoz</div>
+                        <div class="p-des">Developer</div>
+                        <div class="p-sm">
+                          <a href="https://www.facebook.com/eyal.maoz.5"><i class="fab fa-facebook-f"></i></a>
+                          <a href="https://www.instagram.com/eyalmaoz/"><i class="fab fa-instagram"></i></a>
+                          <a href="mailto:eyalvfs@gmail.com"><i class="fa fa-envelope"></i></a>
+                        </div>
+                      </div>
+
+                        
+                    </div>
+                  </div>
+                </div>
+  </div>
+            </div>
+
+
 
         <!-- functions for the ToDoLists -->
         <script>
@@ -216,6 +261,8 @@
                 CreateListHTML(id, name, addDefaultTask);
             }
 
+   
+
             function RemoveList(listID, listName) {
                 var indices = [];
                 for (var i = 0; i < Tasks.length ; i++) {
@@ -286,11 +333,13 @@
                 $(".add-btn").on("click", AddButton);
                 $(".add-item").keypress(AddWithEnter);
                 $(".add-list-name").on("focusout", ChangeListName);
+                $(".add-list-name").on("focus", HideListName);
             }
-            //$(window).bind("beforeunload", function () {
-            //    $(window).unbind("beforeunload");
-            //    return confirm("Do you really want to close?")
-            //})
+
+            $(window).bind("beforeunload", function () {
+                $(window).unbind("beforeunload");
+                return confirm("Do you really want to close?")
+            })
             //window.onbeforeunload = function (event) {
             //    $.ajax({
             //        type: 'POST',
@@ -301,6 +350,10 @@
             //    });
 
             //};
+
+            function HideListName(e) {
+                e.currentTarget.value="";
+            }
 
             function ChangeListName(e) {
                 newName = e.currentTarget.value;
@@ -428,13 +481,13 @@
                 }
             }
 
-            // Add a "checked" symbol when clicking on a list item
-            var list = document.querySelector('ul');
-            list.addEventListener('click', function (ev) {
-                if (ev.target.tagName === 'LI') {
-                    ev.target.classList.toggle('checked');
-                }
-            }, false);
+            //// Add a "checked" symbol when clicking on a list item
+            //var list = document.querySelector('ul');
+            //list.addEventListener('click', function (ev) {
+            //    if (ev.target.tagName === 'LI') {
+            //        ev.target.classList.toggle('checked');
+            //    }
+            //}, false);
 
 
             // function isnt activated 
@@ -489,12 +542,12 @@
             var n = weekday[d.getDay()];
             var randomWordArray = Array(
               "Oh my, it's ",
-              "Whoop, it's ",
+              "Wow, it's ",
               "Happy ",
               "Seems it's ",
               "Awesome, it's ",
               "Have a nice ",
-              "Happy fabulous ",
+              "Happy  ",
               "Enjoy your "
             );
             var randomWord = randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
