@@ -35,7 +35,6 @@ namespace WebFinalProject
                     if (user == null)
                     {
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowInvalidateCredentials()", true);
-                        //worngEmailPass.Visible = true;
                     }
                     else
                     {
@@ -47,7 +46,6 @@ namespace WebFinalProject
             catch(Exception)
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowInvalidateCredentials()", true);
-                //worngEmailPass.Visible = true;
             }
 
         }

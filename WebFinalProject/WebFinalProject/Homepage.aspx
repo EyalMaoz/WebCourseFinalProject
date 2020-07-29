@@ -58,8 +58,7 @@
         <div class="item2">
             <div class="sidebar" data-toggle="collapse">
                 <p onclick="MenuClick(0)"><i class="fa fa-tasks my-fa"></i>My Lists</p>
-                <p onclick="MenuClick(1)"><i class="fa fa-fw fa-user my-fa"></i>Help</p>
-                <p onclick="MenuClick(2)"><i class="fa fa-fw fa-envelope my-fa"></i>About Us</p>
+                <p onclick="MenuClick(1)"><i class="fa fa-fw fa-envelope my-fa"></i>About Us</p>
             </div>
         </div>
 
@@ -94,7 +93,7 @@
 <div class="about-section">
   <h1 style="font-weight:bold">About Us</h1>
    
-  <p style="font-family: 'Raleway', sans-serif;">Hi, We are Linoy and Eyal, <br /> We are software engineering students that wants to remember everything and to make your life easier <br/> so we build the PandaHelper to help us do it ! Hope you enjoy it!</p>
+  <p style="font-family: 'Raleway', sans-serif;">Hi, We are Linoy and Eyal, <br /> We are software engineering students that wants to remember everything and to make your life easier <br/> so thats why we built the <strong>PandaHelper!</strong> Hope you will enjoy it!</p>
 </div>
 
 <div class="row">
@@ -140,7 +139,6 @@
             function MenuClick(pageNum) {
                 pageArr[0].style.display = "none";
                 pageArr[1].style.display = "none";
-                pageArr[2].style.display = "none";
                 pageArr[pageNum].style.display = "grid";
             }
 
@@ -336,20 +334,6 @@
                 $(".add-list-name").on("focus", HideListName);
             }
 
-            $(window).bind("beforeunload", function () {
-                $(window).unbind("beforeunload");
-                return confirm("Do you really want to close?")
-            })
-            //window.onbeforeunload = function (event) {
-            //    $.ajax({
-            //        type: 'POST',
-            //        url: 'webservice.asmx/SaveTasks',
-            //        dataType: 'json',
-            //        data: { tasksArray: JSON.stringify(Tasks) },
-            //        async: false
-            //    });
-
-            //};
 
             function HideListName(e) {
                 e.currentTarget.value="";
@@ -438,12 +422,30 @@
                 }
             }
 
+            // timer for saving:
+            var interval = 4000;  // 1000 = 1 second, 3000 = 3 seconds
+            function doAjax() {
+                $.ajax({
+                    url: "webservice.asmx/SaveTasks",
+                    data: { tasksArray: JSON.stringify(Tasks) },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                    },
+                    complete: function (data) {
+                        // Schedule the next
+                        setTimeout(doAjax, interval);
+                    }
+                });
+            }
+            //
+
+
             $(document).ready(function () {
                 LoadTasks();
                 var listPage = document.getElementById("listPage");
-                var helpPage = document.getElementById("helpPage");
                 var contactUsPage = document.getElementById("contactUsPage");
-                pageArr = [listPage, helpPage, contactUsPage];
+                pageArr = [listPage, contactUsPage];
                 todayContainer.innerHTML = randomWord + n;
 
                 var err = $(".err"),
@@ -458,6 +460,7 @@
                 $(".todo-list").sortable()
                 $(".todo-list").disableSelection();
 
+                setTimeout(doAjax, interval);
             });
 
             // Create a "close" button and append it to each list item
